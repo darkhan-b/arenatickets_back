@@ -1,0 +1,88 @@
+{
+    "path": "App\\Models\\Specific\\Resume",
+    "title": "Резюме",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": false,
+    "delete": true,
+    "with": ["vacancy"],
+    "fields": {
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "name": {
+            "type": "text",
+            "name": "Имя",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "phone": {
+            "type": "text",
+            "name": "Телефон",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "ip": {
+            "type": "text",
+            "name": "IP",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "vacancy_id": {
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Vacancy",
+                "title": "title",
+                "language": "ru"
+            },
+            "name": "Вакансия",
+            "attributes": [
+                {
+                    "id": "vacancy",
+                    "language": "ru",
+                    "value": [
+                        "title"
+                    ]
+                }
+            ],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "table_filter_select": true,
+            "wrapclasses": "col-md-12"
+        },
+        "file": {
+            "type": "text",
+            "name": "Резюме",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "table_url": "/admin/%file%",
+            "wrapclasses": "col-md-12"
+        }
+    }
+}

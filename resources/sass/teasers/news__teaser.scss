@@ -1,0 +1,70 @@
+//.news-teaser {
+//  height: 100%;
+//  padding: 24px;
+//  //border: 1px solid $border-color;
+//  box-shadow:
+//          1px 0 0 0 $border-color,
+//          0 1px 0 0 $border-color,
+//          1px 1px 0 0 $border-color,
+//          1px 0 0 0 $border-color inset,
+//          0 1px 0 0 $border-color inset;
+//  font-family: 'PT Sans';
+//  .date {
+//    font-size: 17px;
+//    color: $blue-color;
+//  }
+//  .category {
+//    color: $muted-text;
+//    font-size: 13px;
+//  }
+//  .title {
+//    margin-top: 70px;
+//    font-size: 25px;
+//    font-family: 'Merriweather';
+//    color: $text-color;
+//    &.has-image {
+//      margin-top: 36px;
+//    }
+//  }
+//  .teaser {
+//    margin-top: 18px;
+//    font-size: 14px;
+//  }
+//  img {
+//    width: 100%;
+//    margin-top: 36px;
+//  }
+//}
+//
+//
+//@media(max-width: 768px) {
+//  .news-teaser {
+//    padding: 20px;
+//    box-shadow:
+//            0 0 0 0 $border-color,
+//            0 0 0 0 $border-color,
+//            0 1px 0 0 $border-color,
+//            0 0 0 0 $border-color inset,
+//            0 1px 0 0 $border-color inset;
+//    .date {
+//      font-size: 15px;
+//    }
+//    .category {
+//      font-size: 12px;
+//    }
+//    .title {
+//      margin-top: 48px;
+//      font-size: 20px;
+//      &.has-image {
+//        margin-top: 24px;
+//      }
+//    }
+//    img {
+//      margin-top: 24px;
+//    }
+//    .teaser {
+//      font-size: 13px;
+//      margin-top: 16px;
+//    }
+//  }
+//}

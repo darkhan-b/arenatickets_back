@@ -1,0 +1,244 @@
+{
+    "path": "App\\Models\\Specific\\Order",
+    "title": "Заказы",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": false,
+    "edit": true,
+    "delete": true,
+    "with": ["timetable:id,date,show_id", "timetable.show:id,title"],
+    "tabs": ["general"],
+    "rowClickable": true,
+    "tdLinkComponent": "EloquentTDLinkOrder",
+    "tabHeaderComponent": "EloquentTabHeaderOrder",
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "show_id": {
+            "id": "show_id",
+            "type": "text",
+            "name": "Событие",
+            "form": false,
+            "attributes": [{
+                "id": "timetable",
+                "skipId": true,
+                "value": "show",
+                "fn": "function a(o) { return `[${o.show_id}] ${o.show.title.ru}` }"
+            }],
+            "idattribute": "show_id",
+            "skipsearch": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "format_date": true,
+            "likesearch": false
+        },
+        "timetable_id": {
+            "id": "timetable_id",
+            "type": "text",
+            "name": "Сеанс",
+            "form": false,
+            "attributes": [{"id": "timetable", "value": ["date"] }],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "format_date": true,
+            "likesearch": false
+        },
+        "name": {
+            "id": "name",
+            "type": "text",
+            "name": "Имя",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required"
+        },
+        "email": {
+            "id": "email",
+            "type": "text",
+            "name": "Email",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required"
+        },
+        "phone": {
+            "id": "phone",
+            "type": "text",
+            "name": "Телефон",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required"
+        },
+        "price": {
+            "id": "price",
+            "type": "text",
+            "name": "Сумма",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "format_number": true
+        },
+        "platform": {
+            "id": "platform",
+            "type": "text",
+            "name": "Платформа",
+            "form": false,
+            "table": false,
+            "likesearch": true
+        },
+        "pay_system": {
+            "id": "pay_system",
+            "type": "text",
+            "name": "Платежная система",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "table_show": [
+                {
+                    "id": "cash",
+                    "title": "Касса",
+                    "tdclass": "badge secondary"
+                },
+                {
+                    "id": "card",
+                    "title": "Онлайн",
+                    "tdclass": "badge success"
+                },
+                {
+                    "id": "invitation",
+                    "title": "Пригласительный",
+                    "tdclass": "badge warning"
+                },
+                {
+                    "id": "partner",
+                    "title": "Партнер",
+                    "tdclass": "badge partner"
+                },
+                {
+                    "id": "kaspi",
+                    "title": "Kaspi",
+                    "tdclass": "badge danger"
+                }
+            ]
+        },
+        "vendor": {
+            "id": "vendor",
+            "type": "select",
+            "name": "API",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "almaty_arena",
+                    "title": "Almaty Arena",
+                    "tdclass": "badge info"
+                }
+            ]
+        },
+        "created_at": {
+            "id": "created_at",
+            "type": "text",
+            "name": "Время",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "format_datetime": true
+        },
+        "paid": {
+            "id": "paid",
+            "type": "checkbox",
+            "name": "Оплачен",
+            "form": false,
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Да",
+                    "tdclass": "badge success"
+                }
+            ]
+        },
+        "reservation": {
+            "id": "reservation",
+            "type": "checkbox",
+            "name": "Резерв",
+            "form": false,
+            "tab": ["general"],
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Резерв",
+                    "tdclass": "badge warning"
+                }
+            ]
+        },
+        "sent": {
+            "id": "sent",
+            "type": "checkbox",
+            "name": "Отправлен",
+            "form": false,
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Да",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

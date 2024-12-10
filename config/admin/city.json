@@ -1,0 +1,93 @@
+{
+    "path": "App\\Models\\Specific\\City",
+    "title": "Города",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "duplicate": true,
+    "modal": "modal-xl",
+    "tabs": ["general", "ru", "kz", "en"],
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "validation": "required"
+        },
+        "description": {
+            "id": "description",
+            "type": "textarea",
+            "name": "Описание",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "form": true,
+            "table": false,
+            "quill": false
+        },
+        "region_code": {
+            "id": "region_code",
+            "type": "text",
+            "name": "Код региона (ISO-3166-2)",
+            "form": false,
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "sort_order": {
+            "id": "sort_order",
+            "type": "number",
+            "name": "Порядок отражения",
+            "form": true,
+            "validation": ["integer","required","min:1"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "active": {
+            "id": "active",
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": true,
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Опубликовано",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

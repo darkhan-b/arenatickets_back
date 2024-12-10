@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /media/
+Disallow: /login/
+Disallow: /register/
+
+Sitemap: https://api.arenatickets.kz/sitemap.xml
+
+Host: api.arenatickets.kz

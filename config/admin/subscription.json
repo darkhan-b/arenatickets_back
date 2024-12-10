@@ -1,0 +1,52 @@
+{
+  "path": "App\\Models\\General\\Subscription",
+  "title": "Подписки",
+  "initial_order": ["id", "desc"],
+  "additional_header_links": true,
+  "add": false,
+  "edit": false,
+  "delete": true,
+  "tabHeaderRightComponent": "EloquentTabHeaderRightSubscription",
+  "fields": {
+    "id": {
+      "id": "id",
+      "type": "text",
+      "name": "Id",
+      "form": false,
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": true
+    },
+    "email": {
+      "id": "email",
+      "type": "text",
+      "name": "Email",
+      "form": false,
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": true
+    },
+    "ip": {
+      "id": "ip",
+      "type": "text",
+      "name": "IP",
+      "form": false,
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": true
+    },
+    "created_at": {
+      "id": "created_at",
+      "type": "text",
+      "name": "Время подписки",
+      "form": false,
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": true
+    }
+  }
+}

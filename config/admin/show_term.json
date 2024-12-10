@@ -1,0 +1,46 @@
+{
+    "path": "App\\Models\\Specific\\ShowTerm",
+    "title": "Условия события",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "tabs": ["general","ru","kz","en"],
+    "with": ["showTermPoints"],
+    "add": true,
+    "edit": true,
+    "duplicate": true,
+    "delete": true,
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "wrapclasses": "col-md-12",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"]
+        },
+        "showTermPoints": {
+            "id": "showTermPoints",
+            "table": false,
+            "form": true,
+            "formFieldComponent": "EloquentFormFieldShowTermPoints"
+        }
+    }
+}

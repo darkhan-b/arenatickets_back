@@ -1,0 +1,70 @@
+{
+    "path": "App\\Models\\General\\ActivityLog",
+    "title": "Логи",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": false,
+    "edit": false,
+    "delete": false,
+    "fields": {
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "description": {
+            "type": "text",
+            "name": "Операция",
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "causer_id": {
+            "type": "text",
+            "name": "Id пользователя",
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "subject_type": {
+            "type": "text",
+            "name": "Модель",
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "subject_id": {
+            "type": "text",
+            "name": "Id модели",
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "properties": {
+            "type": "text",
+            "name": "Изменения",
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "created_at": {
+            "type": "text",
+            "name": "Время",
+            "table": true,
+            "format_date": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true
+        }
+    }
+}

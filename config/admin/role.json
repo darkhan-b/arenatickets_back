@@ -1,0 +1,48 @@
+{
+    "path": "App\\Models\\General\\Role",
+    "title": "Роли",
+    "with": [
+        "permissions"
+    ],
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": false,
+    "edit": true,
+    "delete": false,
+    "fields": {
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "select_data": {
+                "data": []
+            }
+        },
+        "name": {
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "select_data": {
+                "data": []
+            }
+        }
+    },
+    "permissions": {
+        "view": [],
+        "create": [],
+        "update": [],
+        "delete": []
+    },
+    "tabs": []
+}

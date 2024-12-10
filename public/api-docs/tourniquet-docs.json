@@ -1,0 +1,213 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Документация по API для турникетов",
+        "description": "",
+        "contact": {
+            "email": "hello@spaceduck.kz"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.arenatickets.kz/api",
+            "description": "Production API Server"
+        }
+    ],
+    "paths": {
+        "/acs/verify": {
+            "get": {
+                "summary": "Проверка билета",
+                "operationId": "c1219ebce4ab21eafeee9f20786d74c6",
+                "parameters": [
+                    {
+                        "name": "barcode",
+                        "in": "query",
+                        "description": "Штрихкод билета для проверки",
+                        "required": true,
+                        "example": 111111,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "turnstile_id",
+                        "in": "query",
+                        "description": "Идентификатор турникета, через который происходит попытка прохода",
+                        "required": true,
+                        "example": 12345678,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "$ref": "#/components/responses/UnauthorizedError"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "200": {
+                        "$ref": "#/components/responses/SuccessResponse"
+                    }
+                }
+            }
+        },
+        "/acs/register": {
+            "get": {
+                "summary": "Регистрация прохода",
+                "operationId": "c1219ebce4ab214aae8e9f20786d74c6",
+                "parameters": [
+                    {
+                        "name": "barcode",
+                        "in": "query",
+                        "description": "Штрихкод билета для проверки",
+                        "required": true,
+                        "example": 111111,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "turnstile_id",
+                        "in": "query",
+                        "description": "Идентификатор турникета, через который происходит попытка прохода",
+                        "required": true,
+                        "example": 12345678,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "$ref": "#/components/responses/UnauthorizedError"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationError"
+                    },
+                    "200": {
+                        "$ref": "#/components/responses/SuccessPassResponse"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "UnauthorizedError": {
+                "description": "Авторизация не успешна",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiResponse"
+                        },
+                        "example": {
+                            "code": 401,
+                            "message": "Авторизация не успешна"
+                        }
+                    }
+                }
+            },
+            "ValidationError": {
+                "description": "Ошибка валидации",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiResponse"
+                        },
+                        "example": {
+                            "code": 422,
+                            "message": "Поле turnstile id обязательно для заполнения"
+                        }
+                    }
+                }
+            },
+            "SuccessResponse": {
+                "description": "Успешный ответ (code 0: 'Билет не найден', code 1: 'Проход разрешен', code 2: 'Повторный проход', code 3: 'Ограничение по сектору, проход запрещен')",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiResponse"
+                        },
+                        "example": {
+                            "code": 1,
+                            "message": "Проход разрешен",
+                            "data": {
+                                "level": "A1",
+                                "row": "1",
+                                "seat": "2"
+                            }
+                        }
+                    }
+                }
+            },
+            "SuccessPassResponse": {
+                "description": "Успешный ответ (code 0: 'Ошибка регистрации', code 1: 'Проход зафиксирован')",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiResponse"
+                        },
+                        "example": {
+                            "code": 1,
+                            "message": "Проход зафиксирован"
+                        }
+                    }
+                }
+            }
+        },
+        "schemas": {
+            "DataResponse": {
+                "type": "object",
+                "properties": {
+                    "level": {
+                        "type": "string",
+                        "example": "A1"
+                    },
+                    "row": {
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "seat": {
+                        "type": "string",
+                        "example": "2"
+                    }
+                }
+            },
+            "ApiResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/DataResponse"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+                "description": "JWT токен выдается менеджером Arenatickets",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ]
+}

@@ -1,0 +1,135 @@
+.left {
+    &-sidebar {
+        font-size: 15px;
+        width: $leftsidebarw;
+        background: white;
+        border-left: 1px solid #EEF0F1;
+        padding: 20px 0;
+        color: #000;
+        height: 100%;
+        position: relative;
+        min-height: calc(100vh - 200px);
+        a {
+            color: #fff;
+        }
+    }
+    &__logo {
+        max-width: 78px;
+        margin-bottom: 0;
+    }
+    &__event {
+        font-weight: bold;
+        font-size: 20px;
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 14px;
+    }
+    &__next {
+        position: absolute;
+        bottom: 0;
+        background-color: #fff;
+        border-top: 1px solid #EEF0F1;
+        left: 0;
+        z-index: 13;
+        width: 100%;
+        padding-top: 12px;
+        padding-bottom: 16px;
+    }
+}
+.space-for-next {
+    padding-bottom: 100px;
+}
+.cart-wrapper {
+    .order-label {
+        font-weight: 600;
+        font-size: 16px;
+    }
+    .cart-item {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #EEF0F1;
+        &:last-of-type {
+            border-bottom: none;
+        }
+        .section {
+            font-weight: 400;
+            font-size: 12px;
+            color: #7E8389;
+        }
+        .seat {
+            font-weight: 400;
+            font-size: 14px;
+            color: #000;
+        }
+        .price {
+            font-weight: 500;
+            font-size: 14px;
+            color: #000;
+        }
+    }
+}
+
+.badge-success {
+    background: #27AE60;
+    border-radius: 50px;
+}
+.badge-danger {
+    background: #F13737;
+    border-radius: 50px;
+}
+.badge-danger-outline {
+    background: transparent;
+    color: #F13737;
+    border: 1px solid #F13737;
+    border-radius: 50px;
+}
+
+
+@media(max-width: 768px) {
+    .left {
+        &-sidebar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 12;
+            min-height: auto;
+            height: auto;
+            width: 100%;
+            padding: 0 12px;
+        }
+        &__price {
+            margin-bottom: 0;
+            border-top: none;
+            border-bottom: none;
+            margin-top: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        &__logo {
+            max-width: 73px;
+        }
+        &__event {
+            font-size: 17px;
+        }
+    }
+}
+.note-14 {
+    font-size: 14px;
+}
+
+
+
+@media(max-width: 768px) {
+    .left {
+        &-sidebar {
+            a {
+                color: initial;
+            }
+        }
+        &__price {
+            font-size: 20px;
+        }
+    }
+}

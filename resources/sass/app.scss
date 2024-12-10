@@ -1,0 +1,44 @@
+@import 'general/fonts';
+@import 'general/variables';
+@import 'general/mixins';
+
+@import '~bootstrap/scss/bootstrap';
+@import "~noty/src/noty.scss";
+
+@import "general/noty_update";
+@import 'general/loader';
+@import 'general/general';
+@import 'general/general_app';
+//
+@import 'parts/header';
+@import 'parts/footer';
+//@import 'parts/breadcrumb';
+//@import 'parts/paginator';
+//@import 'parts/submenu';
+
+//@import 'teasers/news__teaser';
+//@import 'teasers/person__teaser';
+//@import 'teasers/event__teaser';
+//@import 'teasers/timetable__teaser';
+//@import 'teasers/partner__teaser';
+//@import 'teasers/tour__teaser';
+//@import 'teasers/contest__teaser';
+//@import 'teasers/article__teaser';
+//@import 'teasers/photo__teaser';
+//@import 'teasers/video__teaser';
+//@import 'teasers/youtube__teaser';
+
+//@import 'pages/home';
+//@import 'pages/news';
+//@import 'pages/people';
+//@import 'pages/events';
+//@import 'pages/about';
+//@import 'pages/pages';
+
+@import 'widget/scheme';
+@import 'widget/topsidebar';
+@import 'widget/leftsidebar';
+@import 'widget/mainpart';
+@import 'widget/bottompart';
+@import 'widget/otp';
+

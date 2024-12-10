@@ -1,0 +1,36 @@
+{
+    "path": "App\\Models\\Specific\\Hall",
+    "title": "Залы",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "tabs": ["general","ru","kz","en"],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "fields": {
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        }
+    }
+}

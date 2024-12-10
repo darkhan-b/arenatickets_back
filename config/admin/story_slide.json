@@ -1,0 +1,97 @@
+{
+    "path": "App\\Models\\Specific\\StorySlide",
+    "title": "Слайды stories",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "with": ["category"],
+    "tabs": ["general", "ru", "kz", "en"],
+    "fields": {
+        "teaser": {
+            "type": "text",
+            "form": false,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": false,
+            "table_image": true
+        },
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "button_title": {
+            "type": "text",
+            "name": "Название кнопки",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "wrapclasses": "col-md-12"
+        },
+        "story_category_id": {
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\StoryCategory",
+                "title": "title",
+                "language": "ru"
+            },
+            "name": "Категория",
+            "form": true,
+            "attributes": [{"id": "category", "value": ["title"], "language":  "ru"}],
+            "table": true,
+            "table_filter_select": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "classes": "select2-candidate",
+            "wrapclasses": "col-md-12",
+            "tab": ["general"]
+        },
+        "url": {
+            "type": "text",
+            "name": "Ссылка",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "wallpaper": {
+            "type": "file",
+            "subtype": "image",
+            "name": "Изображение",
+            "collection": "wallpaper",
+            "multiple": false,
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "validation": "mimes:jpeg,png,jpg,gif"
+        },
+        "sort_order": {
+            "type": "text",
+            "name": "Порядок отражения",
+            "form": true,
+            "validation": "integer|required",
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        }
+    }
+}

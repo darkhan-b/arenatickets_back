@@ -1,0 +1,86 @@
+{
+    "path": "App\\Models\\Specific\\RefundApplication",
+    "title": "Заявка на возврат",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "tabs": ["general"],
+    "add": false,
+    "edit": false,
+    "delete": false,
+    "fields": {
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "order_id": {
+            "type": "text",
+            "name": "Заказ",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "email": {
+            "type": "text",
+            "name": "Email",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrap-classes": "col-md-12"
+        },
+        "name": {
+            "type": "text",
+            "name": "Имя",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "phone": {
+            "type": "text",
+            "name": "Телефон",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "reason": {
+            "type": "textarea",
+            "name": "Причина возврата",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "refunded_at": {
+            "type": "text",
+            "name": "Статус",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12",
+            "table_show": {
+                "true": "<span class='badge bg-success'>Одобрена<\/span>"
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "path": "App\\Models\\Emailtext",
+    "title": "Текст email",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": false,
+    "edit": true,
+    "delete": false,
+    "modal": "modal-xl",
+    "fields": {
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "topic": {
+            "type": "text",
+            "name": "Тема письма",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "text": {
+            "type": "textarea",
+            "name": "Текст",
+            "form": true,
+            "table": false,
+            "classes": "ckeditorcandidate",
+            "tab": ["general"]
+        }
+    }
+}

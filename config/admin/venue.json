@@ -1,0 +1,192 @@
+{
+    "path": "App\\Models\\Specific\\Venue",
+    "title": "Площадки",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "with": ["city", "category"],
+    "modal": "modal-lg",
+    "tabs": ["general", "map", "ru", "kz", "en"],
+    "rowClickable": true,
+    "tdLinkComponent": "EloquentTDLinkVenue",
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "validation": "required"
+        },
+        "venue_category_id": {
+            "id": "venue_category_id",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\VenueCategory",
+                "title": "title",
+                "language": "ru"
+            },
+            "name": "Категория места",
+            "form": true,
+            "attributes": [{ "id": "category", "value": "title", "translate": true }],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "table_filter_select": true
+        },
+        "schedule": {
+            "id": "schedule",
+            "type": "textarea",
+            "name": "Время работы",
+            "form": true,
+            "table": false,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "rows": 2
+        },
+        "address": {
+            "id": "address",
+            "type": "textarea",
+            "name": "Адрес",
+            "form": true,
+            "table": false,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "rows": 2
+        },
+        "description": {
+            "id": "description",
+            "type": "textarea",
+            "name": "Описание",
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "form": true,
+            "table": false,
+            "quill": true
+        },
+        "city_id": {
+            "id": "city_id",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\City",
+                "title": "title",
+                "language": "ru"
+            },
+            "name": "Город",
+            "form": true,
+            "attributes": [{ "id": "city", "value": "title", "translate": true }],
+            "table": true,
+            "table_filter_select": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "tab": ["general"]
+        },
+        "phone": {
+            "id": "phone",
+            "type": "text",
+            "name": "Телефон",
+            "form": true,
+            "table": false
+        },
+        "website": {
+            "id": "website",
+            "type": "text",
+            "name": "Сайт",
+            "form": true,
+            "table": false
+        },
+        "wallpaper": {
+            "id": "wallpaper",
+            "type": "file",
+            "subtype": "image",
+            "name": "Изображение",
+            "multiple": false,
+            "collection": "wallpaper",
+            "form": true,
+            "table": false,
+            "validation": ["mimes:jpeg,png,jpg,gif"]
+        },
+        "image": {
+            "id": "image",
+            "type": "file",
+            "subtype": "image",
+            "name": "Галерея",
+            "multiple": true,
+            "form": false,
+            "collection": "default",
+            "table": false,
+            "validation": ["mimes:jpeg,png,jpg,gif"]
+        },
+        "x_coord": {
+            "id": "x_coord",
+            "type": "text",
+            "name": "Координата X",
+            "formFieldComponent": "EloquentFormFieldVenueXCoord",
+            "form": true,
+            "tab": ["map"],
+            "table": false
+        },
+        "slug": {
+            "id": "slug",
+            "type": "text",
+            "name": "ЧПУ",
+            "form": true,
+            "table": false,
+            "tab": ["general"],
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "active": {
+            "id": "active",
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": true,
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Опубликовано",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

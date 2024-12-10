@@ -1,0 +1,99 @@
+{
+    "path": "App\\Models\\Specific\\Tour",
+    "title": "События (гастрольный центр)",
+    "initial_order": [
+        "date",
+        "asc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "modal": "modal-xl",
+    "tabs": ["general","ru","kz","en"],
+    "fields": {
+        "teaserimg": {
+            "type": "text",
+            "form": false,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": false,
+            "table_image": true
+        },
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "teaser": {
+            "type": "textarea",
+            "name": "Краткое описание",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "form": true,
+            "table": false,
+            "quill": false
+        },
+        "image": {
+            "type": "file",
+            "subtype": "image",
+            "name": "Изображение",
+            "multiple": false,
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "validation": "mimes:jpeg,png,jpg,gif"
+        },
+        "url": {
+            "type": "text",
+            "name": "Ссылка",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "table_url": "%url%",
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "date": {
+            "type": "date",
+            "name": "Дата",
+            "tab": ["general"],
+            "validation": "required",
+            "form": true,
+            "table": true
+        },
+        "active": {
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "<span class='badge bg-secondary'>Не опубликовано<\/span>",
+                "true": "<span class='badge bg-success'>Опубликовано<\/span>"
+            }
+        }
+    }
+}

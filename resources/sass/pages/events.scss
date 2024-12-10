@@ -1,0 +1,178 @@
+//.afisha {
+//  padding-bottom: 50px;
+//  &-submenu {
+//    .submenu {
+//      border-top: none;
+//    }
+//  }
+//  &__header {
+//    padding-top: 60px;
+//    h1 {
+//      margin-bottom: 64px;
+//    }
+//  }
+//}
+//.show {
+//  h2 {
+//    font-size: 36px;
+//    text-transform: uppercase;
+//  }
+//  .left-part {
+//    border-right: 1px solid $border-color;
+//    padding-right: 60px;
+//  }
+//  &__about {
+//    padding-top: 72px;
+//    margin-bottom: 29px;
+//  }
+//  &__info-block {
+//    padding: 32px 0 50px 34px;
+//    border-bottom: 1px solid $border-color;
+//    &:last-of-type {
+//      border-bottom: none;
+//    }
+//    .subtitle {
+//      font-size: 16px;
+//      color: $muted-text;
+//      margin-bottom: 9px;
+//    }
+//    .info {
+//      font-size: 28px;
+//      font-family: 'Merriweather';
+//      text-transform: uppercase;
+//    }
+//  }
+//  &__gallery {
+//    padding-top: 54px;
+//    h2 {
+//      margin-bottom: 45px;
+//    }
+//    .swiper-slide {
+//      width: auto;
+//      img {
+//        height: 500px;
+//        width: auto;
+//      }
+//    }
+//  }
+//  &__actors {
+//    padding-top: 72px;
+//    padding-bottom: 72px;
+//    h2 {
+//      margin-bottom: 36px;
+//    }
+//  }
+//  &__schedule {
+//    padding: 80px 0;
+//    color: #fff;
+//    background: #05192D;
+//    h2 {
+//      margin-bottom: 40px;
+//    }
+//    .schedule-table {
+//      width: 100%;
+//      font-size: 15px;
+//      th, td {
+//        font-weight: 400;
+//        border-bottom: 1px solid rgba(204, 204, 204, 0.2);
+//      }
+//      td {
+//        padding: 36px 0;
+//        &.date {
+//          font-size: 36px;
+//          width: 55px;
+//        }
+//        &.time {
+//          font-size: 24px;
+//        }
+//        .day {
+//          font-size: 22px;
+//        }
+//        .weekday {
+//          font-size: 13px;
+//          color: #8B929A;
+//        }
+//        &.action {
+//          width: 180px;
+//        }
+//      }
+//      th {
+//        color: #8B929A;
+//      }
+//    }
+//  }
+//}
+//
+//
+//@media(max-width: 768px) {
+//  .afisha {
+//    &__header {
+//      padding-top: 48px;
+//      h1 {
+//        margin-bottom: 16px;
+//      }
+//    }
+//  }
+//  .show {
+//    h2 {
+//      font-size: 24px;
+//    }
+//    .left-part {
+//      border-right: none;
+//      padding-right: 20px;
+//      padding-left: 20px;
+//      border-bottom: 1px solid $border-color;
+//    }
+//    &__about {
+//      padding-top: 40px;
+//      margin-bottom: 29px;
+//    }
+//    &__info-block {
+//      padding: 24px 20px;
+//      .subtitle {
+//        margin-bottom: 8px;
+//      }
+//      .info {
+//        font-size: 20px;
+//      }
+//      &:last-of-type {
+//        border-bottom: 1px solid $border-color;
+//      }
+//    }
+//    &__gallery {
+//      padding-top: 40px;
+//      .swiper-slide {
+//        img {
+//          height: 280px;
+//        }
+//      }
+//      h2 {
+//        margin-bottom: 36px;
+//      }
+//    }
+//    &__actors {
+//      padding-top: 64px;
+//    }
+//    &__schedule {
+//      padding-top: 55px;
+//      padding-bottom: 40px;
+//    }
+//    .schedule-teaser {
+//      padding: 24px 20px;
+//      font-size: 13px;
+//      border-bottom: 1px solid #374757;
+//      .date {
+//        font-size: 26px;
+//        padding-right: 9px;
+//        border-right: 1px solid #C4C4C4;
+//        margin-right: 10px;
+//      }
+//      .weekday {
+//        color: #8B9CAD;
+//      }
+//      .time {
+//        font-size: 22px;
+//      }
+//    }
+//  }
+//}

@@ -1,0 +1,88 @@
+{
+    "path": "App\\Models\\Specific\\Section",
+    "title": "Сектора",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": false,
+    "edit": true,
+    "delete": true,
+    "with": ["scheme", "scheme.venue"],
+    "tabs": ["general", "ru", "kz"],
+    "additional_links": [
+        {"title": "<i class='ti-eye grey-color'></i>", "url": "/admin#/section/%id%"}
+    ],
+    "fields": {
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz"],
+            "tab": ["ru", "kz"],
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "note": {
+            "type": "text",
+            "name": "Пометка",
+            "form": true,
+            "table": false,
+            "languages": ["ru", "kz"],
+            "tab": ["ru", "kz"],
+            "wrapclasses": "col-md-12"
+        },
+        "venue_id": {
+            "type": "text",
+            "name": "Площадка",
+            "form": false,
+            "attributes": [{"id": "scheme", "value": [{"venue": "title"}] }],
+            "idattribute": "venue_id",
+            "skipsearch": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "format_date": true,
+            "likesearch": false
+        },
+        "venue_scheme_id": {
+            "type": "text",
+            "name": "Рассадка",
+            "form": true,
+            "attributes": [{"id": "scheme", "value": ["title"], "language":  "ru" }],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "format_date": true,
+            "likesearch": false
+        },
+        "for_sale": {
+            "type": "checkbox",
+            "name": "Для продажи",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "<span class='badge badge-secondary'>Нет<\/span>",
+                "true": "<span class='badge badge-success'>Да<\/span>"
+            }
+        }
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "path": "App\\Models\\Specific\\APIPartner",
+    "title": "API партнеры",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "with": ["shows:id,title"],
+    "rowClickable": true,
+    "tdLinkComponent": "EloquentTDLinkAPIPartner",
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "shows": {
+            "id": "shows",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Show",
+                "title": "title",
+                "language": "ru",
+                "autocomplete_model": "show"
+            },
+            "name": "События",
+            "form": true,
+            "skipsearch": true,
+            "autocomplete": true,
+            "attributes": [{ "id": "shows", "value": "title", "translate": true }],
+            "table": true,
+            "multiple": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "table_filter_select": true,
+            "wrapclasses": "col-md-6"
+        },
+        "active": {
+            "id": "active",
+            "type": "checkbox",
+            "name": "Активен",
+            "form": true,
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Активен",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

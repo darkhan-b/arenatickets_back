@@ -1,0 +1,63 @@
+{
+    "path": "App\\Models\\Specific\\VenueScheme",
+    "title": "Рассадки",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "duplicate": true,
+    "rowClickable": true,
+    "tabs": ["general", "ru", "kz", "en"],
+    "with": ["venue:id,title"],
+    "tdLinkComponent": "EloquentTDLinkVenueScheme",
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "validation": "required"
+        },
+        "venue_id": {
+            "id": "venue_id",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Venue",
+                "title": "title",
+                "language": "ru",
+                "autocomplete_model": "venue"
+            },
+            "name": "Площадка",
+            "form": true,
+            "attributes": [{ "id": "venue", "value": "title", "translate": true }],
+            "table": true,
+            "validation": "required",
+            "table_filter_select": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "autocomplete": true,
+            "tab": ["general"]
+        }
+    }
+}

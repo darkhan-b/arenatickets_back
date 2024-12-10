@@ -1,0 +1,63 @@
+{
+    "path": "App\\Models\\Specific\\Vacancy",
+    "title": "Вакансии",
+    "with": [],
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "modal": "modal-xl",
+    "tabs": ["general","ru","kz","en"],
+    "fields": {
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "description": {
+            "type": "textarea",
+            "name": "Описание",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "form": true,
+            "table": false,
+            "quill": false,
+            "classes": "ckeditorcandidate"
+        },
+        "active": {
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "<span class='badge bg-secondary'>Не опубликовано<\/span>",
+                "true": "<span class='badge bg-success'>Опубликовано<\/span>"
+            }
+        }
+    }
+}

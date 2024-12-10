@@ -1,0 +1,175 @@
+.body-widget {
+    background-color: #fafafa;
+}
+.widget-part {
+  max-width: 1200px;
+  //height: 100vh;
+  font-family: 'Golos';
+  h1 {
+    font-weight: 700;
+    font-size: 28px;
+    //font-family: 'PT Sans';
+  }
+  .form-control {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EA;
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+}
+.discount-bubble {
+  background: #FC385B;
+  border-radius: 100px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 2px 5px;
+  color: #fff;
+}
+.right-content {
+  background: #FAFAFA;
+  //height: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  max-width: min(880px, calc(100vw - 320px));
+  flex-direction: column;
+  overflow-y: scroll;
+  .timetable-btn {
+    display: inline-block;
+    text-align: center;
+    min-width: 270px;
+    padding: 13px;
+    margin-bottom: 13px;
+    color: #3B374D;
+    border: 2px solid #3B374D;
+    border-radius: 10px;
+    font-weight: bold;
+    &:hover {
+      background: #3B374D;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  .content-part {
+    padding: 12px 38px;
+    //height: 100%;
+    font-size: 14px;
+    .venue-wrapper {
+      //background: #fafafa;
+      background: #ffffff;
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;  /* Firefox */
+      &::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
+      }
+    }
+    .pricegroup-row {
+      padding: 22px 0;
+      border-bottom: 1px solid #D7DADD;
+    }
+    .pricegroup-title {
+      font-weight: 500;
+      font-size: 18px;
+    }
+    .pricegroup-price {
+      font-size: 16px;
+    }
+    .amount-span {
+      width: 44px;
+      font-weight: 400;
+      font-size: 19px;
+      text-align: center;
+      display: inline-block;
+    }
+    .plus-btn, .minus-btn {
+      display: inline-flex;
+      border: none;
+      background-color: #4BB0FE;
+      width: 44px;
+      height: 44px;
+      line-height: 40px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      user-select: none;
+      transition: 0.1s ease-in;
+      &.disabled {
+        opacity: 0.5;
+      }
+      &:hover {
+        transform: scale(1.06);
+      }
+    }
+  }
+  .label-ch {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .note-ch {
+    color: #878787;
+    font-size: 14px;
+  }
+}
+.countdown {
+  background: #F2F9FF;
+  color: $blue-color;
+  font-weight: 500;
+  font-size: 13px;
+  height: 41px;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  border-radius: 10px;
+  width: 58px;
+}
+
+
+@media(max-width: 768px) {
+  .right-content {
+    max-width: none;
+    height: calc(100vh - 200px);
+    .content-part {
+      padding: 12px 20px;
+      font-size: 13px;
+      .pricegroup-title {
+        font-size: 16px;
+      }
+      //.venue-wrapper {
+        //background: #fafafa;
+      //}
+    }
+    .venue-wrapper {
+      padding-bottom: 120%;
+    }
+    .note-ch {
+      font-size: 12px;
+    }
+    .label-ch {
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+    h1 {
+      font-size: 19px;
+    }
+    .countdown {
+      font-size: 17px;
+      padding: 4px 12px;
+      border-radius: 8px;
+    }
+    .timetable-btn {
+      padding: 9px;
+    }
+  }
+  .discount-bubble {
+    font-size: 12px;
+  }
+}
+
+body.iframe {
+  background: #fff;
+}

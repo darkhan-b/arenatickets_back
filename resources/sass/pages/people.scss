@@ -1,0 +1,129 @@
+//.people {
+//  &__header {
+//    background-image: url('/images/ornament.svg');
+//    background-repeat: repeat;
+//    background-color: #1d446B;
+//    color: #fff;
+//    padding: 89px 0 75px 0;
+//    .subtitle {
+//      color: $muted-text;
+//    }
+//  }
+//  &__lettersmenu {
+//    padding: 54px 0;
+//    a {
+//      color: $text-color;
+//      margin-right: 25px;
+//      display: inline-block;
+//      cursor: pointer;
+//      &.active {
+//        font-weight: bold;
+//      }
+//      &.reset-btn {
+//        font-size: 14px;
+//        color: $muted-text;
+//      }
+//    }
+//  }
+//}
+//.person {
+//  &__header {
+//    .img-around {
+//      display: flex;
+//      justify-content: center;
+//      align-items: center;
+//      width: 340px;
+//      height: 340px;
+//      border-radius: 100%;
+//      border: 1px solid #fff;
+//      .person-icon {
+//        width: 320px;
+//        height: 320px;
+//        border-radius: 100%;
+//        object-fit: cover;
+//      }
+//    }
+//
+//    padding: 60px 0;
+//    color: #fff;
+//    background-image: url('/images/ornament.svg');
+//    background-repeat: repeat;
+//    background-color: #1d446B;
+//  }
+//  &-component {
+//    h2 {
+//      padding-top: 45px;
+//      font-size: 26px;
+//      margin-bottom: 26px;
+//    }
+//    .left-part {
+//      border-right: 1px solid $border-color;
+//      padding-right: 100px;
+//      padding-bottom: 64px;
+//    }
+//    .right-part {
+//      padding-left: 94px;
+//      img {
+//        width: 100%;
+//      }
+//    }
+//    .role-block {
+//      padding: 18px 0;
+//      font-size: 13px;
+//      border-bottom: 1px solid $white-text;
+//      .title {
+//        font-size: 16px;
+//        padding-bottom: 12px;
+//        font-weight: bold;
+//      }
+//    }
+//  }
+//}
+//#vue-people {
+//  padding-bottom: 64px;
+//}
+//
+//
+//@media(max-width: 768px) {
+//  .people {
+//    &__header {
+//      padding: 67px 0 75px 0;
+//    }
+//    .subtitle {
+//      font-size: 16px;
+//    }
+//    &__lettersmenu {
+//      a {
+//        margin-right: 18px;
+//      }
+//      padding: 18px 0;
+//    }
+//  }
+//  .person {
+//    &__header {
+//      .img-around {
+//        width: 253px;
+//        height: 253px;
+//        .person-icon {
+//          width: 241px;
+//          height: 241px;
+//        }
+//      }
+//    }
+//    &-component {
+//      .left-part {
+//        padding-right: 0;
+//        border-right: none;
+//        padding-bottom: 0;
+//      }
+//      h2 {
+//        padding-top: 40px;
+//        margin-bottom: 18px;
+//      }
+//      .right-part {
+//        padding-left: 0;
+//      }
+//    }
+//  }
+//}
+//

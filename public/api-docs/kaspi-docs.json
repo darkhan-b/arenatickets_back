@@ -1,0 +1,368 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Документация по API Arenatickets для каспи оплат",
+        "description": "",
+        "contact": {
+            "email": "hello@spaceduck.kz"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.arenatickets.kz",
+            "description": "Production API Server"
+        }
+    ],
+    "paths": {
+        "/kaspi/webhook": {
+            "get": {
+                "summary": "Вебхук с приложения kaspi",
+                "operationId": "c1219ebce4ab21eafeee9f20786d74c6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Timetable"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Timetable": {
+                "title": "Событие",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "date": {
+                        "type": "string",
+                        "example": "2022-09-10 19:30:00"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/Translation"
+                    },
+                    "type": {
+                        "description": "Бывает два типа: sections или pricegroups, по секторам или по ценовым группам",
+                        "type": "string",
+                        "example": "sections"
+                    },
+                    "venue_scheme_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "venue": {
+                        "$ref": "#/components/schemas/Venue"
+                    }
+                },
+                "type": "object"
+            },
+            "Order": {
+                "title": "Заказ",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "original_price": {
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "fee": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "discount": {
+                        "type": "integer",
+                        "example": 0
+                    },
+                    "final_price": {
+                        "type": "integer",
+                        "example": 110
+                    },
+                    "paid": {
+                        "description": "Оплачен ли заказ",
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "sent": {
+                        "description": "Отправлен ли билет по почте",
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2022-09-01 12:30:00"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderItem"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Translation": {
+                "title": "Мультиязычное название",
+                "properties": {
+                    "kz": {
+                        "type": "string",
+                        "example": "Қазақша аты"
+                    },
+                    "ru": {
+                        "type": "string",
+                        "example": "Название на русском"
+                    },
+                    "en": {
+                        "type": "string",
+                        "example": "English title"
+                    }
+                },
+                "type": "object"
+            },
+            "Venue": {
+                "title": "Площадка",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/Translation"
+                    }
+                },
+                "type": "object"
+            },
+            "SectionInfo": {
+                "title": "Общая информация по сектору / ценовой группе",
+                "properties": {
+                    "amount": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "type": {
+                        "description": "Бывает два типа: sections или pricegroups, по секторам или по ценовым группам",
+                        "type": "string",
+                        "example": "sections"
+                    },
+                    "pricegroup": {
+                        "$ref": "#/components/schemas/Pricegroup"
+                    },
+                    "section": {
+                        "$ref": "#/components/schemas/Section"
+                    }
+                },
+                "type": "object"
+            },
+            "Pricegroup": {
+                "title": "Ценовая группа",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/Translation"
+                    },
+                    "price": {
+                        "type": "integer",
+                        "example": 100
+                    }
+                },
+                "type": "object"
+            },
+            "Section": {
+                "title": "Сектор",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/Translation"
+                    }
+                },
+                "type": "object"
+            },
+            "Seat": {
+                "title": "Место",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "x": {
+                        "description": "x координата",
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "y": {
+                        "description": "y координата",
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "row": {
+                        "description": "номер / название ряда",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "seat": {
+                        "description": "номер / название места",
+                        "type": "string",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "Ticket": {
+                "title": "Билет",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "row": {
+                        "description": "номер / название ряда",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "seat": {
+                        "description": "номер / название места",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "seat_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "price": {
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "blocked": {
+                        "description": "Блокирован ли билет (те, забронирован, но не выкуплен)",
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "sold": {
+                        "description": "Продан ли билет",
+                        "type": "boolean",
+                        "example": false
+                    }
+                },
+                "type": "object"
+            },
+            "CartItem": {
+                "title": "Билет корзины",
+                "properties": {
+                    "ticket_id": {
+                        "description": "Id билета (именно билета, не места). Параметр нужен только при рассадке по местам (type = seats из запроса по сектору)",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "section_id": {
+                        "description": "Id сектора. Параметр нужен только при входных по сектору без места (type = enter из запроса по сектору)",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "pricegroup_id": {
+                        "description": "Id ценовой группы. Параметр нужен только при покупке билетов по ценовым группам (тип события - pricegroups)",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "OrderItem": {
+                "title": "Билет заказа",
+                "properties": {
+                    "seat_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "price": {
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "section_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "ticket_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "row": {
+                        "description": "номер / название ряда",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "seat": {
+                        "description": "номер / название места",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "pricegroup_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "barcode": {
+                        "description": "Штрихкод, только если заказ оплачен.",
+                        "type": "string",
+                        "example": "1234567890"
+                    }
+                },
+                "type": "object"
+            },
+            "Error": {
+                "title": "Ошибка",
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "example": "Неверный формат данных"
+                    }
+                },
+                "type": "object"
+            },
+            "NotFoundError": {
+                "title": "Ошибка",
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "example": "Запись не найдена"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "api_token": {
+                "type": "apiKey",
+                "description": "Токен выдается менеджером Topbilet",
+                "name": "X-PARTNER-TOKEN",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "api_token": []
+        }
+    ]
+}

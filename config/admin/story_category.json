@@ -1,0 +1,80 @@
+{
+    "path": "App\\Models\\Specific\\StoryCategory",
+    "title": "Категории stories",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "tabs": ["general", "ru", "kz", "en"],
+    "fields": {
+        "teaser": {
+            "type": "text",
+            "form": false,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": false,
+            "table_image": true
+        },
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "wrapclasses": "col-md-12"
+        },
+        "wallpaper": {
+            "type": "file",
+            "subtype": "image",
+            "name": "Изображение",
+            "collection": "wallpaper",
+            "multiple": false,
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "validation": "mimes:jpeg,png,jpg,gif"
+        },
+        "sort_order": {
+            "type": "text",
+            "name": "Порядок отражения",
+            "form": true,
+            "validation": "integer|required",
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "active": {
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "<span class='badge bg-secondary'>Не опубликовано<\/span>",
+                "true": "<span class='badge bg-success'>Опубликовано<\/span>"
+            }
+        }
+    }
+}

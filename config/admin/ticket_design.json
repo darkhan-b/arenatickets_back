@@ -1,0 +1,455 @@
+{
+    "path": "App\\Models\\Specific\\TicketDesign",
+    "title": "Шаблоны билета",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "duplicate": true,
+    "modal": "modal-xl",
+    "tabs": ["general"],
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "ID",
+            "form": false,
+            "table": true,
+            "likesearch": false
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required"
+        },
+        "image": {
+            "id": "image",
+            "type": "file",
+            "subtype": "image",
+            "name": "Изображение",
+            "form": true,
+            "table": false,
+            "collection": "default",
+            "validation": "max:2000|file|image|dimensions:width=1240,height=1754",
+            "formnote": "максимальный размер: 2MB, разрешение должно быть 1240px на 1754px",
+            "wrapclasses": "col-md-12"
+        },
+        "title_exists": {
+            "id": "title_exists",
+            "type": "checkbox",
+            "name": "Указывать название события",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "title_l": {
+            "id": "title_l",
+            "type": "number",
+            "name": "Название (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "title_r": {
+            "id": "title_r",
+            "type": "number",
+            "name": "Название (справа)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "title_t": {
+            "id": "title_t",
+            "type": "number",
+            "name": "Название (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "ticketn_exists": {
+            "id": "ticketn_exists",
+            "type": "checkbox",
+            "name": "Указывать # билета",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "ticketn_l": {
+            "id": "ticketn_l",
+            "type": "number",
+            "name": "# билета (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "ticketn_r": {
+            "id": "ticketn_r",
+            "type": "number",
+            "name": "# билета (справа)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "ticketn_t": {
+            "id": "ticketn_t",
+            "type": "number",
+            "name": "# билета (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "date_exists": {
+            "id": "date_exists",
+            "type": "checkbox",
+            "name": "Указывать дату события",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "date_l": {
+            "id": "date_l",
+            "type": "number",
+            "name": "Дата (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "date_r": {
+            "id": "date_r",
+            "type": "number",
+            "name": "Дата (справа)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "date_t": {
+            "id": "date_t",
+            "type": "number",
+            "name": "Дата (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "venue_exists": {
+            "id": "venue_exists",
+            "type": "checkbox",
+            "name": "Указывать площадку события",
+            "form": false,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "venue_l": {
+            "id": "venue_l",
+            "type": "number",
+            "name": "Площадка (x координата)",
+            "form": false,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "venue_r": {
+            "id": "venue_r",
+            "type": "number",
+            "name": "Площадка (справа)",
+            "form": false,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "venue_t": {
+            "id": "venue_t",
+            "type": "number",
+            "name": "Площадка (y координата)",
+            "form": false,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "section_exists": {
+            "id": "section_exists",
+            "type": "checkbox",
+            "name": "Указывать сектор",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "section_l": {
+            "id": "section_l",
+            "type": "number",
+            "name": "Сектор (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "section_r": {
+            "id": "section_r",
+            "type": "number",
+            "name": "Сектор (справа)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "section_t": {
+            "id": "section_t",
+            "type": "number",
+            "name": "Сектор (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "row_exists": {
+            "id": "row_exists",
+            "type": "checkbox",
+            "name": "Указывать ряд",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "row_l": {
+            "id": "row_l",
+            "type": "number",
+            "name": "Ряд (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "row_r": {
+            "id": "row_r",
+            "type": "number",
+            "name": "Ряд (справа)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "row_t": {
+            "id": "row_t",
+            "type": "number",
+            "name": "Ряд (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "seat_exists": {
+            "id": "seat_exists",
+            "type": "checkbox",
+            "name": "Указывать место",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "seat_l": {
+            "id": "seat_l",
+            "type": "number",
+            "name": "Место (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "seat_r": {
+            "id": "seat_r",
+            "type": "number",
+            "name": "Место (справа)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "seat_t": {
+            "id": "seat_t",
+            "type": "number",
+            "name": "Место (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "price_exists": {
+            "id": "price_exists",
+            "type": "checkbox",
+            "name": "Указывать цену",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "price_l": {
+            "id": "price_l",
+            "type": "number",
+            "name": "Цена (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "price_r": {
+            "id": "price_r",
+            "type": "number",
+            "name": "Цена (справа)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "price_t": {
+            "id": "price_t",
+            "type": "number",
+            "name": "Цена (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "barcode_exists": {
+            "id": "barcode_exists",
+            "type": "checkbox",
+            "name": "Указывать штрихкод",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "barcode_l": {
+            "id": "barcode_l",
+            "type": "number",
+            "name": "Штрихкод (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "barcode_r": {
+            "id": "barcode_r",
+            "type": "number",
+            "name": "Штрихкод (справа)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "barcode_t": {
+            "id": "barcode_t",
+            "type": "number",
+            "name": "Штрихкод (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "qr_exists": {
+            "id": "qr_exists",
+            "type": "checkbox",
+            "name": "Указывать qr код",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "qr_l": {
+            "id": "qr_l",
+            "type": "number",
+            "name": "QR код (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "qr_r": {
+            "id": "qr_r",
+            "type": "number",
+            "name": "QR код (справа)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "qr_t": {
+            "id": "qr_t",
+            "type": "number",
+            "name": "QR код (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "order_exists": {
+            "id": "order_exists",
+            "type": "checkbox",
+            "name": "Указывать номер заказа",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "order_l": {
+            "id": "order_l",
+            "type": "number",
+            "name": "Номер заказа (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "order_r": {
+            "id": "order_r",
+            "type": "number",
+            "name": "Номер заказа (x координата) справа",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "order_t": {
+            "id": "order_t",
+            "type": "number",
+            "name": "Номер заказа (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "user_exists": {
+            "id": "user_exists",
+            "type": "checkbox",
+            "name": "Указывать пользователя",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "user_l": {
+            "id": "user_l",
+            "type": "number",
+            "name": "Пользователь (x координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "user_r": {
+            "id": "user_r",
+            "type": "number",
+            "name": "Пользователь (x координата) справа",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "user_t": {
+            "id": "user_t",
+            "type": "number",
+            "name": "Пользователь (y координата)",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "conditions_exist": {
+            "id": "conditions_exist",
+            "type": "checkbox",
+            "name": "Указывать условия",
+            "form": false,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "bottom_data_duplicate_exists": {
+            "id": "bottom_data_duplicate_exists",
+            "type": "checkbox",
+            "name": "Дублировать данные в нижней части билета",
+            "form": true,
+            "wrapclasses": "col-md-3 refresh-iframe",
+            "table": false
+        },
+        "pdf_example": {
+            "id": "pdf_example",
+            "type": "text",
+            "name": "Пример дизайна",
+            "formFieldComponent": "EloquentFormFieldTicketDesignExample",
+            "form": true,
+            "table": false
+        }
+    }
+}

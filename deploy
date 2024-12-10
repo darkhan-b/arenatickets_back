@@ -1,0 +1,5 @@
+git add . && git commit --allow-empty -m "$1" && git push &&
+ssh arenatickets << EOF
+  cd /var/www/arenatickets_back;
+  git pull;
+EOF

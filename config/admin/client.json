@@ -1,0 +1,73 @@
+{
+    "path": "App\\Models\\Specific\\Client",
+    "title": "Клиенты",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "duplicate": false,
+    "tabs": ["general"],
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "tab": ["general"],
+            "validation": "required"
+        },
+        "status": {
+            "id": "status",
+            "type": "select",
+            "select_data": {
+                "type": "list",
+                "data": [
+                    { "id": "blocked", "title": "Блокирован"},
+                    { "id": "deleted", "title": "Удален"},
+                    { "id": "active", "title": "Активен"}
+                ]
+            },
+            "name": "Статус",
+            "form": true,
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "blocked",
+                    "title": "Блокирован",
+                    "tdclass": "badge secondary"
+                },
+                {
+                    "id": "deleted",
+                    "title": "Удален",
+                    "tdclass": "badge danger"
+                },
+                {
+                    "id": "active",
+                    "title": "Активен",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

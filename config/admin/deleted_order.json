@@ -1,0 +1,198 @@
+{
+    "path": "App\\Models\\Specific\\Order",
+    "title": "Заказы",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": false,
+    "edit": false,
+    "delete": true,
+    "with": ["timetable", "timetable.show"],
+    "tabs": ["general"],
+    "permissions": {
+        "delete": ["force_delete_order"]
+    },
+    "rowClickable": true,
+    "tdLinkComponent": "EloquentTDLinkOrder",
+    "tabHeaderComponent": "EloquentTabHeaderOrder",
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "timetable_id": {
+            "id": "timetable_id",
+            "name": "Событие",
+            "form": false,
+            "attributes": [{"id": "timetable", "value": [{"show": "title"}] }],
+            "table": false,
+            "likesearch": false
+        },
+        "show_id": {
+            "id": "show_id",
+            "type": "text",
+            "name": "Событие",
+            "form": false,
+            "attributes": [{
+                "id": "timetable",
+                "value": "show",
+                "fn": "function a(o) { return o.show.title.ru }"
+            }],
+            "idattribute": "show_id",
+            "skipsearch": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "format_date": true,
+            "likesearch": false
+        },
+        "name": {
+            "id": "name",
+            "type": "text",
+            "name": "Имя",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required"
+        },
+        "email": {
+            "id": "email",
+            "type": "text",
+            "name": "Email",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "wrap-classes": "col-md-12"
+        },
+        "phone": {
+            "id": "phone",
+            "type": "text",
+            "name": "Телефон",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "wrap-classes": "col-md-12"
+        },
+        "price": {
+            "id": "price",
+            "type": "text",
+            "name": "Сумма",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "format_number": true,
+            "wrap-classes": "col-md-12"
+        },
+        "platform": {
+            "id": "platform",
+            "type": "text",
+            "name": "Платформа",
+            "form": false,
+            "table": false,
+            "likesearch": true
+        },
+        "vendor": {
+            "id": "vendor",
+            "type": "select",
+            "name": "API",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "almaty_arena",
+                    "title": "Almaty Arena",
+                    "tdclass": "badge info"
+                }
+            ]
+        },
+        "created_at": {
+            "id": "created_at",
+            "type": "text",
+            "name": "Время",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "format_datetime": true
+        },
+        "refunded_at": {
+            "id": "refunded_at",
+            "type": "text",
+            "name": "Возврат",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "format_datetime": true
+        },
+        "paid": {
+            "id": "paid",
+            "type": "checkbox",
+            "name": "Оплачен",
+            "form": true,
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Да",
+                    "tdclass": "badge success"
+                }
+            ]
+        },
+        "sent": {
+            "id": "sent",
+            "type": "checkbox",
+            "name": "Отправлен",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Да",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

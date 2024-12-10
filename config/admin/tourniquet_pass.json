@@ -1,0 +1,52 @@
+{
+    "path": "App\\Models\\Specific\\TourniquetPass",
+    "title": "Проходы через турникеты",
+    "initial_order": [
+        "id",
+        "asc"
+    ],
+    "add": false,
+    "edit": false,
+    "delete": false,
+    "modal": "modal-xl",
+    "tabs": ["general","ru","kz","en"],
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "barcode": {
+            "id": "barcode",
+            "type": "text",
+            "name": "Штрихкод",
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "turnstile_id": {
+            "id": "turnstile_id",
+            "type": "text",
+            "name": "Турникет",
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "created_at": {
+            "id": "created_at",
+            "type": "text",
+            "name": "Создан",
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "format_datetime": true
+        }
+    }
+}

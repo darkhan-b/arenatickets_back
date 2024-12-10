@@ -1,0 +1,19 @@
+.bottom-part {
+  padding: 12px 38px;
+  &__content {
+    text-align: right;
+  }
+}
+
+@media(max-width: 768px) {
+  .bottom-part {
+    &__content {
+      padding: 8px 0;
+      display: flex;
+      justify-content: flex-start;
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}

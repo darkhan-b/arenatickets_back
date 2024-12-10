@@ -1,0 +1,106 @@
+{
+    "path": "App\\Models\\Specific\\Banner",
+    "title": "Баннера",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "modal": "modal-lg",
+    "tabs": ["general", "ru", "kz", "en"],
+    "fields": {
+        "teaser": {
+            "type": "text",
+            "form": false,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": false,
+            "table_image": true
+        },
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "url": {
+            "type": "text",
+            "name": "Ссылка",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "wrapclasses": "col-md-12",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"]
+        },
+        "position": {
+            "type": "select",
+            "name": "Расположение",
+            "tab": ["general"],
+            "select_data": {
+                "type": "list",
+                "data": [
+                    {"id": "top", "title": "Сверху"},
+                    {"id": "bottom", "title": "Снизу"}
+                ]
+            },
+            "form": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "tablesort": true,
+            "table": true,
+            "validation": "required",
+            "table_show": {
+                "top": "<span class='badge badge-authorized'>Сверху<\/span>",
+                "bottom": "<span class='badge badge-waiting_payment'>Снизу<\/span>"
+            }
+        },
+        "wallpaper": {
+            "type": "file",
+            "subtype": "image",
+            "name": "Изображение",
+            "multiple": false,
+            "collection": "wallpaper",
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "validation": "mimes:jpeg,png,jpg,gif",
+            "formnote": "2220px на 240px для верхнего, 1080px на 460px для нижних"
+        },
+        "banner": {
+            "type": "file",
+            "subtype": "image",
+            "name": "Изображение мобильное",
+            "collection": "banner",
+            "multiple": false,
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "validation": "mimes:jpeg,png,jpg,gif",
+            "formnote": "670px на 200px для верхнего, 670px на 360px для нижних"
+        },
+        "active": {
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "<span class='badge bg-secondary'>Не опубликовано<\/span>",
+                "true": "<span class='badge bg-success'>Опубликовано<\/span>"
+            }
+        }
+    }
+}

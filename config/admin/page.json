@@ -1,0 +1,99 @@
+{
+    "path": "App\\Models\\General\\Page",
+    "title": "Страницы",
+    "with": [],
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "modal": "modal-xl",
+    "tabs": ["general","ru","kz","en"],
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "body": {
+            "id": "body",
+            "type": "richtext",
+            "name": "Описание",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "form": true,
+            "table": false,
+            "quill": false,
+            "classes": "ckeditorcandidate"
+        },
+        "image": {
+            "id": "image",
+            "type": "file",
+            "subtype": "image",
+            "name": "Галерея",
+            "multiple": true,
+            "form": false,
+            "table": false,
+            "collection": "default",
+            "wrapclasses": "col-md-12",
+            "validation": "mimes:jpeg,png,jpg,gif"
+        },
+        "slug": {
+            "id": "slug",
+            "type": "text",
+            "name": "ЧПУ",
+            "form": true,
+            "table": true,
+            "validation": "required",
+            "tab": ["general"],
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "active": {
+            "id": "active",
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Опубликовано",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

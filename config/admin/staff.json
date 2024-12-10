@@ -1,0 +1,127 @@
+{
+    "path": "App\\Models\\Specific\\Staff",
+    "title": "Сотрудники",
+    "initial_order": ["id", "desc"],
+    "add": true,
+    "edit": true,
+    "delete": false,
+    "with": ["roles", "client"],
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "email": {
+            "id": "email",
+            "type": "text",
+            "name": "Email",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": ["required", "email", "unique:users"],
+            "validation_update": ["required", "email"],
+            "tab": ["general"]
+        },
+        "password": {
+            "id": "password",
+            "type": "password",
+            "name": "Пароль",
+            "form": true,
+            "table": false,
+            "likesearch": true,
+            "validation": ["required", "min:8"],
+            "validation_update": ["nullable", "min:8"],
+            "tab": ["general"]
+        },
+        "name": {
+            "id": "name",
+            "type": "text",
+            "name": "Имя",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": ["required"],
+            "tab": ["general"]
+        },
+        "roles": {
+            "id": "roles",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "title": "name",
+                "model": "App\\Models\\General\\Role",
+                "selectOptionsFunction": "App\\Models\\General\\Role::getSelectOptions"
+            },
+            "name": "Роль",
+            "form": true,
+            "attributes": [{ "id": "roles", "value": "name", "translate": false }],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "multiple": true,
+            "table_filter_select": true,
+            "skipsearch": true,
+            "likesearch": false,
+            "tab": ["general"]
+        },
+        "client_id": {
+            "id": "client_id",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Client",
+                "title": "title"
+            },
+            "name": "Клиент",
+            "form": true,
+            "permissions": ["admin_clients"],
+            "attributes": [{ "id": "client", "value": "title" }],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "table_filter_select": true
+        },
+        "blocked": {
+            "id": "blocked",
+            "type": "checkbox",
+            "name": "Заблокирован",
+            "form": false,
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "Активен",
+                    "tdclass": "badge success"
+                },
+                {
+                    "id": "true",
+                    "title": "Блокирован",
+                    "tdclass": "badge error"
+                }
+            ]
+        },
+        "created_at": {
+            "id": "created_at",
+            "type": "text",
+            "name": "Создан",
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "format_date": true
+        }
+    }
+}

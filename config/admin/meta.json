@@ -1,0 +1,59 @@
+{
+    "path": "App\\Models\\General\\Meta",
+    "title": "Мета",
+    "initial_order": [
+        "url",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "tabs": ["general","ru","kz","en"],
+    "fields": {
+        "id": {
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "url": {
+            "type": "text",
+            "name": "Url",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required|unique:metas",
+            "validation_update": "required",
+            "wrapclasses": "col-md-12",
+            "table_url": "%url%",
+            "tab": ["general"]
+
+        },
+        "meta_title": {
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "meta_description": {
+            "type": "textarea",
+            "name": "Описание",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "form": true,
+            "table": false
+        }
+    }
+}

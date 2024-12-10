@@ -1,0 +1,86 @@
+.top {
+    &-sidebar {
+        border-bottom: 1px solid #EEF0F1;
+        background: #FAFAFA;
+        height: 80px;
+        padding-left: 40px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .btn-back {
+            background: transparent;
+            border: 2px solid $blue-color;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            border-radius: 8px;
+            svg {
+                fill: $blue-color;
+            }
+            &:hover {
+                background: $blue-color;
+                svg {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+    &__contacts {
+        padding-right: 80px;
+        .phone {
+            font-weight: 400;
+            font-size: 14px;
+            color: #1E1E1E;
+        }
+        .schedule {
+            color: #ADADAD;
+            font-weight: 400;
+            font-size: 12px;
+        }
+    }
+    &__title {
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    &__subtitle {
+        font-size: 12px;
+    }
+}
+
+.iframe {
+    .top-sidebar {
+        padding-right: 74px;
+    }
+}
+
+@media(max-width: 768px) {
+    .top {
+        &__contacts {
+            padding-right: 24px;
+            &.rightPadding {
+                padding-right: 40px; // because in iframe there will be close button on the right
+            }
+        }
+        &-sidebar {
+            //display: block;
+            height: 60px;
+            padding: 0 20px;
+            .non-iframe-close {
+                img {
+                    width: 32px;
+                }
+            }
+        }
+        &__title {
+            font-size: 12px;
+        }
+    }
+    .iframe {
+        .top-sidebar {
+            padding-right: 55px;
+        }
+    }
+}

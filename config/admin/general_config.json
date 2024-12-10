@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "application": ["view","create", "update", "delete"],
+    "instruction": ["view","create", "update", "delete"],
+    "menu_item": ["view","create", "update", "delete"],
+    "meta": ["view","create", "update", "delete"],
+    "page": ["view","create", "update", "delete"],
+    "setting": ["view","create", "update", "delete"],
+    "user": ["view","create", "update", "delete"]
+  }
+}

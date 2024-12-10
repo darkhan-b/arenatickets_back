@@ -1,0 +1,23 @@
+.otp-input {
+  width: 64px;
+  height: 64px;
+  padding: 5px;
+  margin: 0 10px;
+  font-size: 32px;
+  border-radius: 14px;
+  text-align: center;
+  border: none;
+  &.error {
+    border: 1px solid red !important;
+  }
+  &:focus-visible {
+    border: 3px solid #89CCFF;
+    outline: none;
+  }
+  box-shadow: 0px 13px 29px -5px rgba(146, 150, 157, 0.25);
+}
+.otp-input::-webkit-inner-spin-button,
+.otp-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

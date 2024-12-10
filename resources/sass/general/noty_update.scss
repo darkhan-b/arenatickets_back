@@ -1,0 +1,28 @@
+/// *** NOTY *** ///
+
+.noty_theme__mint.noty_bar .noty_body,
+.noty_theme__mint.noty_type__alert,
+.noty_theme__mint.noty_type__error,
+.noty_theme__mint.noty_type__success,
+.noty_theme__mint.noty_type__warning
+{
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  //background: #fff;
+  //color: #313232;
+  border-radius: 8px;
+  color: #fff;
+}
+.noty_theme__mint.noty_bar .noty_body {
+  padding: 10px;
+}
+.noty_theme__mint.noty_type__alert, .noty_theme__mint.noty_type__error {
+  background-color: $dark-red;
+}
+.noty_theme__mint.noty_type__success {
+  background-color: $blue-color; 
+}
+.noty_theme__mint.noty_type__warning {
+  background-color: $color-warning;
+}

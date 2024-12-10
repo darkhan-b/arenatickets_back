@@ -1,0 +1,159 @@
+{
+    "path": "App\\Models\\Specific\\Slide",
+    "title": "Слайды",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "with": ["show"],
+    "tabs": ["general", "ru", "kz", "en"],
+    "fields": {
+        "teaser": {
+            "id": "teaser",
+            "type": "text",
+            "form": false,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": false,
+            "table_image": true
+        },
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "wrapclasses": "col-md-12"
+        },
+        "subtitle": {
+            "id": "subtitle",
+            "type": "text",
+            "name": "Подпись",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "wrapclasses": "col-md-12"
+        },
+        "show_id": {
+            "id": "show_id",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Show",
+                "title": "title",
+                "language": "ru",
+                "autocomplete_model": "show"
+            },
+            "name": "Событие",
+            "form": true,
+            "attributes": [{ "id": "show", "value": "title", "translate": true }],
+            "table": true,
+            "table_filter_select": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "autocomplete": true,
+            "classes": "select2-candidate",
+            "wrapclasses": "col-md-12",
+            "formnote": "Если у слайда выбрано событие, то все поля будут заполняться автоматически",
+            "tab": ["general"]
+        },
+        "url": {
+            "id": "url",
+            "type": "text",
+            "name": "Ссылка",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"]
+        },
+        "wallpaper": {
+            "id": "wallpaper",
+            "type": "file",
+            "subtype": "image",
+            "name": "Изображение",
+            "collection": "wallpaper",
+            "multiple": false,
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "validation": "mimes:jpeg,png,jpg,gif",
+            "formnote": "1860px на 720px (jpeg,png,jpg)"
+        },
+        "banner": {
+            "id": "banner",
+            "type": "file",
+            "subtype": "image",
+            "name": "Изображение мобильное",
+            "collection": "banner",
+            "multiple": false,
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "validation": "mimes:jpeg,png,jpg,gif",
+            "formnote": "800px на 540px (jpeg,png,jpg)"
+        },
+        "sort_order": {
+            "id": "sort_order",
+            "type": "text",
+            "name": "Порядок отражения",
+            "form": true,
+            "validation": "integer|required",
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "active": {
+            "id": "active",
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Опубликовано",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

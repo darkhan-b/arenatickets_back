@@ -1,0 +1,37 @@
+{
+    "path": "App\\Models\\Specific\\VenueCategory",
+    "title": "Категории мест",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "tabs": ["ru", "kz", "en"],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "title": {
+            "id": "title",
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": true,
+            "likesearch": true,
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "validation": ["required"]
+        }
+    }
+}

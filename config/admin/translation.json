@@ -1,0 +1,61 @@
+{
+    "path": "App\\Models\\General\\Translation",
+    "title": "Переводы",
+    "with": [],
+    "initial_order": ["code", "asc"],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "fields": {
+        "code": {
+            "id": "code",
+            "type": "text",
+            "name": "Код",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required"
+        },
+        "kz": {
+            "id": "kz",
+            "type": "textarea",
+            "name": "KZ",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "rows": 1,
+            "autosize": "{ minRows: 1, maxRows: 5 }",
+            "validation": "nullable"
+        },
+        "ru": {
+            "id": "ru",
+            "type": "textarea",
+            "name": "RU",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "autosize": "{ minRows: 1, maxRows: 5 }",
+            "rows": 1,
+            "validation": "nullable"
+        },
+        "en": {
+            "id": "en",
+            "type": "textarea",
+            "name": "EN",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "autosize": "{ minRows: 1, maxRows: 5 }",
+            "rows": 1,
+            "validation": "nullable"
+        }
+    }
+}

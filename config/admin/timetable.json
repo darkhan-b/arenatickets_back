@@ -1,0 +1,306 @@
+{
+    "path": "App\\Models\\Specific\\Timetable",
+    "title": "Сеансы",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "tabs": ["general", "ru", "kz", "en"],
+    "additional_links": [
+        {"title": "<i class='ti-eye grey-color' data-toggle='tooltip' title='На страницу сеанса'></i>", "url": "/widget#/%show_id%/%id%"},
+        {"title": "<i class='ti-ticket grey-color' data-toggle='tooltip' title='Проставить цены'></i>", "url": "/admin#/timetable/%id%"},
+        {"title": "<i class='ti-shopping-cart grey-color' data-toggle='tooltip' title='Список продаж'></i>", "url": "/admin/report/sales/excel?timetable_ids=%id%"},
+        {"title": "<i class='ti-control-shuffle grey-color' data-toggle='tooltip' title='Статистика проходов'></i>", "url": "/admin#/timetable/%id%/scans"}
+    ],
+    "rowClickable": true,
+    "tdLinkComponent": "EloquentTDLinkTimetable",
+    "with": ["show:id,title", "venue:id,title", "scheme:id,venue_id,title"],
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "note": {
+            "id": "note",
+            "type": "textarea",
+            "name": "Пометка",
+            "languages": ["ru", "kz", "en"],
+            "tab": ["ru", "kz", "en"],
+            "form": true,
+            "table": false,
+            "quill": true
+        },
+        "date": {
+            "id": "date",
+            "type": "datetime",
+            "name": "Время проведения",
+            "tab": ["general"],
+            "validation": "required",
+            "form": true,
+            "format_datetime": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "tablesort": true,
+            "table": true
+        },
+        "show_till": {
+            "id": "show_till",
+            "type": "datetime",
+            "name": "Показывать сеанс до",
+            "tab": ["general"],
+            "form": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "tablesort": true,
+            "table": false
+        },
+        "sell_till": {
+            "id": "sell_till",
+            "type": "datetime",
+            "name": "Закрыть продажу в",
+            "tab": ["general"],
+            "form": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "tablesort": true,
+            "table": false
+        },
+        "show_id": {
+            "id": "show_id",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Show",
+                "title": "title",
+                "language": "ru",
+                "autocomplete_model": "show"
+            },
+            "name": "Событие",
+            "form": true,
+            "attributes": [{ "id": "show", "value": "title", "translate": true }],
+            "table": true,
+            "table_filter_select": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "validation": "required",
+            "autocomplete": true,
+            "tab": ["general"]
+        },
+        "venue_id": {
+            "id": "venue_id",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Venue",
+                "title": "title",
+                "language": "ru"
+            },
+            "name": "Площадка",
+            "form": false,
+            "attributes": [{ "id": "venue", "value": "title", "translate": true }],
+            "table": true,
+            "table_filter_select": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "tab": ["general"]
+        },
+        "venue_scheme_id": {
+            "id": "venue_scheme_id",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\VenueScheme",
+                "title": "title",
+                "language": "ru",
+                "autocomplete_model": "venue_scheme"
+            },
+            "name": "Рассадка",
+            "form": true,
+            "attributes": [{ "id": "scheme", "value": "title", "translate": true }],
+            "table": true,
+            "table_filter_select": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "validation": "required",
+            "additionalFormFieldComponent": "EloquentFormFieldTimetableVenueScheme",
+            "tab": ["general"]
+        },
+        "vendor": {
+            "id": "vendor",
+            "type": "select",
+            "name": "API",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "almaty_arena",
+                    "title": "Almaty Arena",
+                    "tdclass": "badge info"
+                }
+            ]
+        },
+        "type": {
+            "id": "type",
+            "type": "select",
+            "name": "Тип",
+            "tab": ["general"],
+            "select_data": {
+                "type": "list",
+                "data": [
+                    {"id": "sections", "title": "По секторам"},
+                    {"id": "pricegroups", "title": "По ценовым группам"}
+                ]
+            },
+            "form": false,
+            "tablesearch": true,
+            "likesearch": false,
+            "tablesort": true,
+            "table": true,
+            "table_show": [
+                {
+                    "id": "sections",
+                    "title": "По секторам",
+                    "tdclass": "badge info"
+                },
+                {
+                    "id": "pricegroups",
+                    "title": "По ценовым группам",
+                    "tdclass": "badge warning"
+                }
+            ]
+        },
+        "discount": {
+            "id": "discount",
+            "type": "number",
+            "name": "Скидка (от 0 до 100)",
+            "form": true,
+            "table": false,
+            "validation": "nullable|numeric|min:0|max:100"
+        },
+        "sale_starts_soon": {
+            "id": "sale_starts_soon",
+            "type": "checkbox",
+            "name": "Скоро в продаже",
+            "form": false,
+            "tab": ["general"],
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "-",
+                "true": "<span class='badge bg-success'>Да<\/span>"
+            }
+        },
+        "temporary_blocked": {
+            "id": "temporary_blocked",
+            "type": "checkbox",
+            "name": "Продажи временно приостановлены",
+            "form": false,
+            "tab": ["general"],
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "-",
+                "true": "<span class='badge bg-success'>Да<\/span>"
+            }
+        },
+        "cancelled": {
+            "id": "cancelled",
+            "type": "checkbox",
+            "name": "Отменено",
+            "form": false,
+            "tab": ["general"],
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "-",
+                "true": "<span class='badge bg-success'>Да<\/span>"
+            }
+        },
+        "postponed": {
+            "id": "postponed",
+            "type": "checkbox",
+            "name": "Перенесено",
+            "form": false,
+            "tab": ["general"],
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "-",
+                "true": "<span class='badge bg-success'>Да<\/span>"
+            }
+        },
+        "sold_out": {
+            "id": "sold_out",
+            "type": "checkbox",
+            "name": "Sold out",
+            "form": false,
+            "tab": ["general"],
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "-",
+                "true": "<span class='badge bg-success'>Да<\/span>"
+            }
+        },
+        "reservation_sale": {
+            "id": "reservation_sale",
+            "type": "checkbox",
+            "name": "Продажа бронирований",
+            "form": false,
+            "tab": ["general"],
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "formnote": "Для случаев, когда пользователи покупают не билеты, а бронирования, которые потом обменивают на билеты"
+        },
+        "active": {
+            "id": "active",
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": true,
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Опубликовано",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

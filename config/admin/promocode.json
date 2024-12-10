@@ -1,0 +1,129 @@
+{
+    "path": "App\\Models\\Specific\\Promocode",
+    "title": "Промокоды",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": true,
+    "edit": true,
+    "delete": true,
+    "modal": "modal-xl",
+    "with": ["timetable:id,show_id,date", "timetable.show:id,title"],
+    "fields": {
+        "id": {
+            "id": "id",
+            "type": "text",
+            "name": "Id",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true
+        },
+        "promocode": {
+            "id": "promocode",
+            "type": "text",
+            "name": "Промокод",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required|max:50|regex:/^[\u0400-\u04FFa-zA-Z0-9]*$/",
+            "formnote": "Без пробелов, спецсимволов, маленькими буквами",
+            "wrapclasses": "col-md-12"
+        },
+        "timetable_id": {
+            "id": "timetable_id",
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Timetable",
+                "title": "date",
+                "language": "ru",
+                "autocomplete_model": "timetable"
+            },
+            "name": "Сеанс",
+            "form": true,
+            "skipsearch": true,
+            "attributes": [{
+                "id": "timetable",
+                "value": "show",
+                "fn": "function a(o) { return o.show.title.ru + ' (' + o.date + ')' }"
+            }],
+            "table": true,
+            "multiple": false,
+            "autocomplete": true,
+            "classes": "select2-candidate",
+            "tablesort": true,
+            "tablesearch": true,
+            "table_filter_select": false,
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "discount": {
+            "id": "discount",
+            "type": "number",
+            "name": "Скидка (от 0 до 100)",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "validation": "required|nullable|numeric|min:1|max:100"
+        },
+        "times_used": {
+            "id": "times_used",
+            "type": "number",
+            "name": "Использован (только оплаченные)",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "format_number": true
+        },
+        "times_can_be_used": {
+            "id": "times_can_be_used",
+            "type": "number",
+            "name": "Максимальное кол-во использований",
+            "form": true,
+            "table": false,
+            "likesearch": false,
+            "format_number": true,
+            "formnote": "Оставить пустым, если без лимита, поставить 1, если может использоваться только один раз (кол-во считается по заказам, не по билетам)"
+        },
+        "applicable_to_price": {
+            "id": "applicable_to_price",
+            "type": "number",
+            "name": "Применимо к стоимости",
+            "form": true,
+            "table": false,
+            "likesearch": false,
+            "format_number": true,
+            "formnote": "Оставить пустым, если применимо ко всем стоимостям"
+        },
+        "active": {
+            "id": "active",
+            "type": "checkbox",
+            "name": "Активен",
+            "form": true,
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": [
+                {
+                    "id": "false",
+                    "title": "-",
+                    "tdclass": ""
+                },
+                {
+                    "id": "true",
+                    "title": "Активен",
+                    "tdclass": "badge success"
+                }
+            ]
+        }
+    }
+}

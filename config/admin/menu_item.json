@@ -1,0 +1,148 @@
+{
+  "path": "App\\Models\\General\\MenuItem",
+  "title": "Пункты меню",
+  "with": [],
+  "initial_order": ["sort_order", "desc"],
+  "add": true,
+  "edit": true,
+  "delete": true,
+  "duplicate": true,
+  "clearcache": ["menu"],
+  "tabs": ["general","ru","kz","en"],
+  "fields": {
+    "id": {
+      "type": "text",
+      "name": "ID",
+      "form": false,
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": false
+    },
+    "title": {
+      "type": "text",
+      "name": "Название",
+      "form": true,
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": true,
+      "validation": "required",
+      "wrapclasses": "col-md-12",
+      "tab": ["ru","kz","en"],
+      "languages": ["ru","kz","en"]
+    },
+    "url": {
+      "type": "text",
+      "name": "Ссылка",
+      "form": true,
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": true,
+      "table_url": "%url%",
+      "validation": "required",
+      "wrapclasses": "col-md-12"
+    },
+    "sort_order": {
+      "type": "text",
+      "name": "Порядок отражения",
+      "form": true,
+      "validation": "integer|required|min:1",
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": true,
+      "wrapclasses": "col-md-12"
+    },
+    "header": {
+      "type": "checkbox",
+      "name": "Отображать в головном меню",
+      "form": true,
+      "wrapclasses": "col-md-12",
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": false,
+      "table_show": {
+        "false": "<span class='badge bg-secondary'>Нет</span>",
+        "true": "<span class='badge bg-success'>Да</span>"
+      }
+    },
+    "footer_1": {
+      "type": "checkbox",
+      "name": "Отображать в подвале (1)",
+      "form": true,
+      "wrapclasses": "col-md-12",
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": false,
+      "table_show": {
+        "false": "<span class='badge bg-secondary'>Нет</span>",
+        "true": "<span class='badge bg-success'>Да</span>"
+      }
+    },
+    "footer_2": {
+      "type": "checkbox",
+      "name": "Отображать в подвале (2)",
+      "form": true,
+      "wrapclasses": "col-md-12",
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": false,
+      "table_show": {
+        "false": "<span class='badge bg-secondary'>Нет</span>",
+        "true": "<span class='badge bg-success'>Да</span>"
+      }
+    },
+    "footer_3": {
+      "type": "checkbox",
+      "name": "Отображать в подвале (3)",
+      "form": true,
+      "wrapclasses": "col-md-12",
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": false,
+      "table_show": {
+        "false": "<span class='badge bg-secondary'>Нет</span>",
+        "true": "<span class='badge bg-success'>Да</span>"
+      }
+    },
+    "content_menu": {
+      "type": "checkbox",
+      "name": "Меню страниц",
+      "form": true,
+      "wrapclasses": "col-md-12",
+      "table": true,
+      "tablesort": true,
+      "tablesearch": true,
+      "likesearch": false,
+      "table_show": {
+        "false": "<span class='badge bg-secondary'>Нет</span>",
+        "true": "<span class='badge bg-success'>Да</span>"
+      }
+    },
+    "parent_menu_item_id": {
+      "type": "select",
+      "select_data": {
+        "type": "model",
+        "model": "App\\Models\\General\\MenuItem",
+        "title": "title"
+      },
+      "name": "Родительский пункт меню",
+      "form": true,
+      "attributes": [{
+        "id": "menu_item",
+        "language": "ru",
+        "value": [
+          "title"
+        ]
+      }],
+      "table": false,
+      "wrapclasses": "col-md-12"
+    }
+  }
+}

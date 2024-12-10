@@ -1,0 +1,442 @@
+{
+    "path": "App\\Models\\Specific\\OrganizerShow",
+    "title": "События от организаторов",
+    "initial_order": [
+        "id",
+        "desc"
+    ],
+    "add": false,
+    "edit": true,
+    "delete": true,
+    "modal": "modal-xl",
+    "with": ["venue", "organizer", "categories"],
+    "tabs": ["general","ru","kz","en","business","afisha"],
+    "fields": {
+        "teaser": {
+            "type": "text",
+            "form": false,
+            "table": true,
+            "tablesort": false,
+            "tablesearch": false,
+            "table_image": true
+        },
+        "id": {
+            "type": "text",
+            "name": "ID",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false
+        },
+        "title": {
+            "type": "text",
+            "name": "Название",
+            "form": true,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "validation": "required",
+            "wrapclasses": "col-md-12",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"]
+        },
+        "short_description": {
+            "type": "textarea",
+            "rows": 2,
+            "name": "Тизер",
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"]
+        },
+        "author": {
+            "type": "text",
+            "name": "Автор",
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"]
+        },
+        "director": {
+            "type": "text",
+            "name": "Режиссер",
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"]
+        },
+        "description": {
+            "type": "textarea",
+            "name": "Описание",
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"],
+            "quill": true
+        },
+        "price": {
+            "type": "text",
+            "name": "Цена",
+            "form": true,
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["ru","kz","en"],
+            "languages": ["ru","kz","en"]
+        },
+        "category_id": {
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Category",
+                "title": "title",
+                "language": "ru"
+            },
+            "name": "Категория",
+            "form": false,
+            "skipsearch": true,
+            "attributes": [
+                {
+                    "id": "category",
+                    "language": "ru",
+                    "value": [
+                        "title"
+                    ]
+                }
+            ],
+            "table": false,
+            "multiple": false,
+            "classes": "select2-candidate",
+            "tablesort": true,
+            "tablesearch": true,
+            "table_filter_select": true,
+            "wrapclasses": "col-md-6"
+        },
+        "categories": {
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Category",
+                "title": "title",
+                "language": "ru"
+            },
+            "name": "Категории",
+            "form": true,
+            "skipsearch": true,
+            "attributes": [
+                {
+                    "id": "categories",
+                    "language": "ru",
+                    "value": [
+                        "title"
+                    ]
+                }
+            ],
+            "table": true,
+            "multiple": true,
+            "classes": "select2-candidate",
+            "tablesort": true,
+            "tablesearch": true,
+            "table_filter_select": true,
+            "wrapclasses": "col-md-6"
+        },
+        "duration": {
+            "type": "text",
+            "name": "Длительность (минут)",
+            "form": true,
+            "validation": "integer|nullable",
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-6"
+        },
+        "venue_id": {
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Venue",
+                "title": "title",
+                "language": "ru"
+            },
+            "name": "Площадка",
+            "form": true,
+            "attributes": [
+                {
+                    "id": "venue",
+                    "language": "ru",
+                    "value": [
+                        "title"
+                    ]
+                }
+            ],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "table_filter_select": true,
+            "validation": "required",
+            "wrapclasses": "col-md-12"
+        },
+        "internal_comment": {
+            "type": "text",
+            "name": "Другая площадка",
+            "form": true,
+            "validation": "nullable",
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "age": {
+            "type": "text",
+            "name": "Возраст",
+            "form": true,
+            "validation": "nullable",
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-6"
+        },
+        "language": {
+            "type": "select",
+            "name": "Язык",
+            "select_data": {
+                "type": "list",
+                "data": [
+                    {"value": "kazakh", "title": "Казахский"},
+                    {"value": "russian", "title": "Русский"},
+                    {"value": "english", "title": "Английский"}
+                ]
+            },
+            "form": true,
+            "validation": "nullable",
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-6"
+        },
+        "wallpaper": {
+            "type": "file",
+            "subtype": "image",
+            "name": "Основное фото (карточка)",
+            "multiple": false,
+            "collection": "wallpaper",
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-4",
+            "validation": "mimes:jpeg,png,jpg,gif"
+        },
+        "banner": {
+            "type": "file",
+            "subtype": "image",
+            "name": "Основное фото (баннер)",
+            "multiple": false,
+            "collection": "banner",
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-4",
+            "validation": "mimes:jpeg,png,jpg,gif"
+        },
+        "mobile": {
+            "type": "file",
+            "subtype": "image",
+            "name": "Мобильное фото (баннер)",
+            "multiple": false,
+            "collection": "mobile",
+            "form": true,
+            "table": false,
+            "wrapclasses": "col-md-4",
+            "validation": "mimes:jpeg,png,jpg,gif"
+        },
+        "image": {
+            "type": "file",
+            "subtype": "image",
+            "name": "Галерея",
+            "multiple": true,
+            "form": true,
+            "collection": "default",
+            "table": false,
+            "wrapclasses": "col-md-12",
+            "validation": "mimes:jpeg,png,jpg,gif"
+        },
+        "video_url": {
+            "type": "text",
+            "name": "Видео ссылка",
+            "form": true,
+            "table": false,
+            "validation": "string|max:300|nullable",
+            "formnote": "Ссылка с youtube: например, https://www.youtube.com/watch?v=VqhCQZaH4Vs",
+            "wrapclasses": "col-md-12"
+        },
+        "organizer_id": {
+            "type": "select",
+            "select_data": {
+                "type": "model",
+                "model": "App\\Models\\Specific\\Organizer",
+                "title": "name"
+            },
+            "name": "Организатор",
+            "form": true,
+            "attributes": [
+                {
+                    "id": "organizer",
+                    "value": ["name"]
+                }
+            ],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "table_filter_select": true,
+            "wrapclasses": "col-md-12",
+            "tab" : ["business"]
+        },
+        "external_fee_value": {
+            "type": "number",
+            "name": "Верхняя комиссия (сверх цены)",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "table": false,
+            "validation": "numeric|nullable",
+            "tab" : ["business"]
+        },
+        "external_fee_type": {
+            "type": "select",
+            "name": "Тип верхней комиссии",
+            "form": true,
+            "select_data": {
+                "type": "list",
+                "data": [
+                    {"value": "percent", "title": "процент"},
+                    {"value": "absolute", "title": "тенге"}
+                ]
+            },
+            "wrapclasses": "col-md-12",
+            "table": false,
+            "validation": "in:percent,absolute",
+            "tab" : ["business"]
+        },
+        "internal_fee_value": {
+            "type": "number",
+            "name": "Внутренняя комиссия (внутри цены)",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "table": false,
+            "validation": "numeric|nullable",
+            "tab" : ["business"]
+        },
+        "internal_fee_type": {
+            "type": "select",
+            "name": "Тип внутренней комиссии",
+            "form": true,
+            "select_data": {
+                "type": "list",
+                "data": [
+                    { "id": "percent", "title": "процент" },
+                    { "id": "absolute", "title": "тенге" }
+                ]
+            },
+            "wrapclasses": "col-md-12",
+            "table": false,
+            "validation": "in:percent,absolute",
+            "tab" : ["business"]
+        },
+        "sort_order": {
+            "type": "text",
+            "name": "Порядок отражения",
+            "form": true,
+            "validation": "integer|required|min:1",
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": true,
+            "wrapclasses": "col-md-12"
+        },
+        "vendor": {
+            "type": "select",
+            "name": "API",
+            "form": false,
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "dvorec_respubliki": "ДР",
+                "almaty_arena": "АА",
+                "abay_arena": "АБА",
+                "showmarket": "SHMKT"
+            }
+        },
+        "active": {
+            "type": "checkbox",
+            "name": "Опубликовано",
+            "form": false,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": false,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "<span class='badge bg-secondary'>Не опубликовано<\/span>",
+                "true": "<span class='badge bg-success'>Опубликовано<\/span>"
+            }
+        },
+        "organizer_add_status": {
+            "type": "checkbox",
+            "name": "Статус",
+            "form": false,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "new": "<span class='badge bg-secondary'>Новое<\/span>",
+                "rejected": "<span class='badge bg-danger'>Отклонена<\/span>",
+                "approved": "<span class='badge bg-success'>Одобрена<\/span>"
+            }
+        },
+        "recommended": {
+            "type": "checkbox",
+            "name": "Показывать в рекомендованных",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "-",
+                "true": "<span class='badge bg-success'>Да<\/span>"
+            }
+        },
+        "popular": {
+            "type": "checkbox",
+            "name": "Показывать в популярных",
+            "form": true,
+            "wrapclasses": "col-md-12",
+            "tab": ["general"],
+            "table": true,
+            "tablesort": true,
+            "tablesearch": true,
+            "likesearch": false,
+            "table_show": {
+                "false": "-",
+                "true": "<span class='badge bg-success'>Да<\/span>"
+            }
+        }
+    }
+}
