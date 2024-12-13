@@ -1,5 +1,13 @@
-git add . && git commit --allow-empty -m "$1" && git push &&
-ssh arenatickets << EOF
-  cd /var/www/arenatickets_back;
-  git pull;
-EOF
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Ошибка: Укажите сообщение для коммита!"
+  exit 1
+fi
+
+git add .
+git commit --allow-empty -m "$1"
+git push
+
+ssh root@91.147.95.50 "cd /var/www/arenatickets_back && git pull && composer install --no-dev --optimize-autoloader && php artisan migrate --force && php artisan cache:clear && php artisan config:clear && php artisan route:clear"
+
