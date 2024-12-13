@@ -28,9 +28,14 @@ class OrderFillRequest extends FormRequest
             'email'               => 'required|email|max:255',
             'phone'               => 'required',
             'comment'             => 'string|nullable',
-            'pay_system'          => 'required|in:card,invitation,cash,invitation_hide,kaspi',
+            'pay_system'          => 'required|in:card,invitation,cash,forum,invitation_hide,kaspi',
             'pay_system_imitated' => 'nullable|in:card,installment,kaspi',
             'show_to_organizer'   => 'boolean|nullable',
+            'company'             => 'string|nullable|max:255',
+            'position'            => 'string|nullable|max:255',
+            'country'             => 'string|nullable|max:255',
+            'participation'       => 'string|nullable|in:visitor,speaker,exhibitor',
+            'source'              => 'string|nullable|max:255',
         ];
     }
 }

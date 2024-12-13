@@ -56,6 +56,10 @@ class Order extends Model {
 		'show_to_organizer',
 		'pay_system_imitated',
 		'promocode',
+		'country',
+    	'position',
+    	'company',
+    	'participation',
 		'promocode_discount_rate',
 		'platform',
 		'gcid'
@@ -417,7 +421,6 @@ class Order extends Model {
 
 
 	public function successfullyPaid($amount, $send = true, $pay_date = null, $pay_id = null) {
-
 		if($this->vendor) {
 			$class = $this->getVendorClass();
 			if($class) {
@@ -427,23 +430,26 @@ class Order extends Model {
 				return false;
 			}
 		}
-
+	
 		$update_data = [
 			'pay_sum' => $amount,
 			'paid' => 1
 		];
+	
 		if($pay_date) {
 			$update_data['pay_date'] = $pay_date;
 		}
+	
 		if(!$pay_date && !$this->pay_date) {
 			$update_data['pay_date'] = date('Y-m-d H:i:s');
 		}
+	
 		if($pay_id) {
 			$update_data['pay_id'] = $pay_id;
 		}
-
+	
 		$this->update($update_data);
-
+	
 		if(!$this->vendor) {
 			$ticket_ids = $this->orderItems()
 				->whereNotNull('ticket_id')
@@ -455,15 +461,16 @@ class Order extends Model {
 					->update(['sold' => 1]);
 			}
 		}
-
+	
 		if($send && !$this->sent) {
 			$this->sendByEmail();
 		}
-
+	
 		$this->updatePromocodeCount();
-
+	
 		return true;
 	}
+	
 
 	public function soldAsInvitation() {
 		$this->pay_system = PaymentType::INVITATION;
@@ -476,6 +483,18 @@ class Order extends Model {
 		return true;
 	}
 
+	public function soldAsForum() {
+		$this->pay_system = PaymentType::FORUM;
+		$this->price = 0;
+		$this->discount = $this->original_price;
+		$this->internal_fee = 0;
+		$this->external_fee = 0;
+		$this->save();
+		$this->successfullyPaid(0, false);
+		return true;
+	}
+	
+	
 
 
 	public function recountPrice() {
@@ -574,6 +593,54 @@ class Order extends Model {
 		$order->recountPrice();
 		$order->generateHash();
 		$order->soldAsInvitation();
+		return $order;
+	}
+
+	public static function generateForumFromTickets($tickets, $hidePrice = false, $comment = null) {
+		$user = Auth::user();
+		if(!$user || !$tickets || count($tickets) < 1) return false;
+		$timetable_id = $tickets[0]->timetable_id;
+		$timetable = Timetable::find($timetable_id);
+		$show = $timetable?->show;
+		$order = Order::create([
+			'timetable_id'      => $timetable_id,
+			'user_id'           => $user->id,
+			'name'              => $user->name,
+			'phone'             => $user->phone,
+			'email'             => $user->email,
+			'comment'           => $comment,
+			'pay_system'        => PaymentType::FORUM,
+			'legal_entity_id'   => $show?->legal_entity_id ?? null,
+			'hide_price'        => $hidePrice,
+			'expiry_date'       => date('Y-m-d H:i:s', strtotime('+'.(ORDER_TIME_LIMIT + 5).' minutes')),
+			'platform'          => DEFAULT_SOURCE,
+			'ip'                => Request::ip(),
+			'country'           => $user->country ?? null, 
+			'position'          => $user->position ?? null,
+			'company'           => $user->company ?? null, 
+			'participation'     => $user->participation ?? null,
+		]);
+		
+		foreach($tickets as $ticket) {
+			$oi = OrderItem::create([
+				'order_id'          => $order->id,
+				'timetable_id'      => $timetable_id,
+				'price'             => $ticket->price,
+				'original_price'    => $ticket->price,
+				'section_id'        => $ticket->section_id,
+				'pricegroup_id'     => $ticket->pricegroup_id,
+				'row'               => $ticket->row,
+				'seat'              => $ticket->seat,
+				'seat_id'           => $ticket->seat_id,
+				'ticket_id'         => $ticket->id,
+			]);
+			$oi->generateBarcode();
+			$ticket->blocked = 1;
+			$ticket->save();
+		}
+		$order->recountPrice();
+		$order->generateHash();
+		$order->soldAsForum();
 		return $order;
 	}
 

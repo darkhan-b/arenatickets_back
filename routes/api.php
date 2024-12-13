@@ -159,6 +159,7 @@ Route::group(['middleware' => ['widgetClientDetection', 'throttle:120,1', 'apito
     Route::get('/timetable/{id}', [APIEventController::class, 'getTimetable']);
     Route::get('/timetable/{timetable_id}/section/{id}', [APIEventController::class, 'getSection']);
     Route::post('/order/init', [APIOrderController::class, 'initOrder']);
+    Route::post('/forum/init', [APIOrderController::class, 'initForum']);
     Route::post('/token/auth', [AuthController::class, 'loginWithToken']);
     Route::get('/order/{id}/{hash}', [APIOrderController::class, 'getOrder']);
     Route::post('/order/{id}/{hash}/fill', [APIOrderController::class, 'fillOrder']);

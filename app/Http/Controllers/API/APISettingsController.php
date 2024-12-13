@@ -52,6 +52,9 @@ class APISettingsController extends Controller {
             if(($request->show_id || $request->order_id) && $user->isOrganizerForShow($request->show_id, $request->order_id)) {
                 $showRights[] = 'invitation';
             }
+            if(($request->show_id || $request->order_id) && $user->isOrganizerForShow($request->show_id, $request->order_id)) {
+                $showRights[] = 'forum';
+            }
             if(in_array('kassa', $user->permissionsList)) {
                 $showRights[] = 'kassa';
             }

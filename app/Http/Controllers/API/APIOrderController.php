@@ -88,6 +88,44 @@ class APIOrderController extends Controller {
         ]);
     }
 
+    public function initForum(ForumInitRequest $request) {
+
+        $timetable = Timetable::findOrFail($request->timetable_id);
+
+        if(!$timetable->active && !in_array($timetable->id, TIMETABLES_FOR_TESTING)) {
+            return response()->json(['error' => 'Мероприятие недоступно']);
+        }
+
+		if($timetable->sell_till && $timetable->salesFinished) {
+			return response()->json(['error' => 'Продажи по мероприятию завершены']);
+		}
+
+		if(!$timetable->sell_till && $timetable->passed) {
+			return response()->json(['error' => 'Мероприятие прошло']);
+		}
+
+        if(!Ticket::allTicketsAvailable($request->cart, $timetable)) {
+            return response()->json(['error' => 'К сожалению, некоторые билеты были уже выкуплены']);
+        }
+
+        $user = auth('sanctum')->user();
+
+		try {
+			$order = Order::generateOrderFromRequest($timetable, $user, $request);
+		} catch (\Exception $e) {
+			return response()->json(['error' => $e->getMessage()]);
+		}
+
+        if(!$order) {
+            return response()->json(['error' => 'Что-то пошло не так, заказ не был создан']);
+        }
+
+        return response()->json([
+            'order' => $order,
+            'user'  => $user
+        ]);
+    }
+
 
     public function fillOrder(OrderFillRequest $request, $id, $hash) {
 
@@ -116,6 +154,7 @@ class APIOrderController extends Controller {
         $comment = $user && $user->can('write_order_comments') ? $request->comment : null;
         $pay_system_imitated = $user && $user->can('imitate_pay_methods') ? $request->pay_system_imitated : null;
         $show_to_organizer = true;
+        
         if($pay_system === PaymentType::INVITATION) {
             $show_to_organizer = false;
             if($user && $user->can('hide_orders_for_organizers') && $request->show_to_organizer) {
@@ -123,18 +162,25 @@ class APIOrderController extends Controller {
             }
         }
 
-        $order->update([
+        $orderData = [
             'name'               => $request->name,
             'email'              => $request->email,
             'phone'              => $request->phone,
-            'comment'            => $comment,
-            'user_id'            => $user?->id,
-            'pay_system'         => $pay_system,
-            'pay_system_imitated'=> $pay_system_imitated,
-            'show_to_organizer'  => $show_to_organizer,
+            'comment'            => $request->comment,
+            'pay_system'         => $request->pay_system,
+            'pay_system_imitated'=> $request->pay_system_imitated,
+            'show_to_organizer'  => $request->show_to_organizer,
             'hide_price'         => $hide_price,
-            'is_refundable'      => $request->is_refundable ?? 1
-        ]);
+            'is_refundable'      => $request->is_refundable ?? 1,
+            'company'            => $request->company,
+            'position'           => $request->position,
+            'country'            => $request->country,
+            'participation'      => $request->participation,
+            'source'             => $request->source,
+        ];
+                
+        $order->update($orderData);
+        
 
         $order->applyPromocode(isset($request->promocode) && $request->promocode ? $request->promocode : null);
 
@@ -165,6 +211,20 @@ class APIOrderController extends Controller {
         if(in_array($pay_system, [PaymentType::INVITATION]) && $show && $user && $user->isOrganizerForShow($show->id)) {
             $order->soldAsInvitation();
             return response()->json(['success' => 1, 'redirect' => $order->ticketsLink ]);
+        }
+
+        if ($pay_system === PaymentType::FORUM) {
+            $order->soldAsForum();
+            return response()->json([
+                'success' => 1,
+                'redirect' => $order->ticketsLink,
+                'user' => [
+                    'id' => $user->id ?? null,
+                    'name' => $user->name ?? null,
+                    'email' => $user->email ?? null,
+                    'phone' => $user->phone ?? null,
+                ],
+            ]);
         }
 
         if($pay_system == PaymentType::CARD) {

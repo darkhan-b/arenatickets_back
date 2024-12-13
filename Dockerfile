@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.1-fpm
 
 # Install dockerize so we can wait for containers to be ready
 ENV DOCKERIZE_VERSION 0.6.1
@@ -11,7 +11,7 @@ RUN curl -s -f -L -o /tmp/dockerize.tar.gz https://github.com/jwilder/dockerize/
 
 ENV COMPOSER_VERSION 2.1.5
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=$COMPOSER_VERSION
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash
@@ -86,7 +86,8 @@ RUN composer install \
     && chown -R www-data:www-data /var/www/public/storage \
     && mkdir -p /var/www/public/media \
     && chown -R www-data:www-data /var/www/public/media \
+    && mkdir -p /var/www/public/kcfinder/upload \
     && chown -R www-data:www-data /var/www/public/kcfinder/upload \
-    #&& crontab -u www-data /etc/cron.d/crontab \
     && cron
+
 

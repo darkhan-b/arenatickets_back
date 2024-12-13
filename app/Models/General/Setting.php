@@ -48,6 +48,7 @@ class Setting extends Model
             ['id' => PaymentType::CARD, 'title' => PaymentType::CARD ],
             ['id' => PaymentType::CASH, 'title' => PaymentType::CASH ],
             ['id' => PaymentType::KASPI, 'title' => PaymentType::KASPI ],
+            ['id' => PaymentType::FORUM, 'title' => PaymentType::FORUM ],
             ['id' => PaymentType::INVITATION, 'title' => PaymentType::INVITATION ],
             ['id' => PaymentType::PARTNER, 'title' => PaymentType::PARTNER ],
         ];

@@ -384,6 +384,20 @@ class Timetable extends Model {
                 });
             }
         }
+        if($this->type == TimetableType::SECTIONS && count($tickets) > 0 && $tickets[0]->seat_id) {
+            $type = TicketType::SEATS;
+            if($invitationSeparate) {
+                $soldWithInvitation = OrderItem::where('section_id', $id)->whereHas('order', function($q) {
+                    $q->paid()
+                        ->where('timetable_id', $this->id)
+                        ->where('pay_system', PaymentType::FORUM);
+                })->pluck('ticket_id')->toArray();
+                $tickets->map(function($item) use($soldWithInvitation) {
+                    $item->soldAsForum = $item->sold && in_array($item->id, $soldWithInvitation);
+                    return $item;
+                });
+            }
+        }
         $prices = Ticket::arrayPrices($tickets->pluck('price')->toArray());
         $sectionIds = $id ? [$id] : Section::where(['venue_scheme_id' => $this->venue_scheme_id])->pluck('id')->toArray();
         $seats = $type == TimetableType::PRICEGROUPS ? [] : Seat::whereIn('section_id', $sectionIds)->get();

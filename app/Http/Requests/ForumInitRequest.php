@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PricegroupRequest extends FormRequest
+class ForumInitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class PricegroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => 'required',
-            'price'     => 'required|numeric|min:0',
-            'amount'    => 'required|numeric|min:1',
-            'comment'   => 'string|nullable',
+            'timetable_id' => 'required',
+            'cart' => 'required|array|min:1'
         ];
     }
 }

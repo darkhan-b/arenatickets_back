@@ -10,5 +10,6 @@ abstract class PaymentType
     const CARD          = 'card';
     const INVITATION    = 'invitation';
     const PARTNER       = 'partner';
+    const FORUM         = 'forum';
     const KASPI         = 'kaspi';
 }
