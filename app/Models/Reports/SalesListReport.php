@@ -232,7 +232,7 @@ class SalesListReport
     }
 
     public function generateRow($d) {
-        if($this->report_type === 'unsold') {
+        if ($this->report_type === 'unsold') {
             $row = [
                 'ID билета'             => $d->id,
                 'ID сеанса'             => $d->timetable_id,
@@ -247,33 +247,56 @@ class SalesListReport
             ];
         } else {
             $startPrice = $d->original_price >= $d->price ? $d->original_price : $d->price;
-			$promocodeDiscount = $d->weightedPromocodeDiscount;
+            $promocodeDiscount = $d->weightedPromocodeDiscount;
+    
             $row = [
-                'ID билета'             => $d->id,
-                'ID заказа'             => $d->order_id,
-                'ID сеанса'             => $d->orderWithTrashed->timetable_id ?? '-',
-                'Наименование события'  => $d->orderWithTrashed->timetable->show->title ?? '-',
-                'Дата сеанса'           => $d->orderWithTrashed->timetable->date ?? '-',
-                'Сектор'                => $d->section ? $d->section->title : 'Входной',
-                'Ряд'                   => $d->row ?: '-',
-                'Место'                 => $d->seat ?: '-',
-                'Начальная цена'        => $startPrice,
-				'Скидка'                => $startPrice - $d->price + $promocodeDiscount,
-				'Цена'                  => $d->price - $promocodeDiscount,
-                'Сервисный сбор'        => $d->weightedServiceFee,
+                'ID билета' => $d->id,
+                'ID заказа' => $d->order_id,
+                'ID сеанса' => $d->orderWithTrashed->timetable_id ?? '-',
+                'Наименование события' => $d->orderWithTrashed->timetable->show->title ?? '-',
+                'Дата сеанса' => $d->orderWithTrashed->timetable->date ?? '-',
+                'Сектор' => $d->section ? $d->section->title : 'Входной',
+                'Ряд' => $d->row ?: '-',
+                'Место' => $d->seat ?: '-',
+                'Начальная цена' => $startPrice,
+                'Скидка' => $startPrice - $d->price + $promocodeDiscount,
+                'Цена' => $d->price - $promocodeDiscount,
+                'Сервисный сбор' => $d->weightedServiceFee,
                 'Комиссия возвратного билета' => $d->weightedRefundableFee,
-                'Цена после сбора'      => $d->weightedPrice,
-                'Штрихкод'              => $d->barcode.' ', // add space to prevent Excel from converting to scientific notation
-                'Email'                 => $d->orderWithTrashed->email,
-                'Контактные данные'     => $d->orderWithTrashed->name,
-                'Телефон'               => $d->orderWithTrashed->phone,
-                'Дата заказа'           => (string)$d->orderWithTrashed->created_at,
-                'Тип продажи'           => $d->orderWithTrashed->pay_system,
-                'Платформа'             => $d->orderWithTrashed->platform,
-                'Комментарий'           => $d->orderWithTrashed->comment,
-                'Дата возврата'         => $this->report_type === 'refunds' ? $d->orderWithTrashed->refunded_at : ''
+                'Цена после сбора' => $d->weightedPrice,
+                'Штрихкод' => $d->barcode . ' ', // Добавляем пробел, чтобы Excel не форматировал как научное число
+                'Email' => $d->orderWithTrashed->email,
+                'Контактные данные' => $d->orderWithTrashed->name,
+                'Телефон' => $d->orderWithTrashed->phone,
+                'Позиция' => $d->orderWithTrashed->position ?? '-',
+                'Компания' => $d->orderWithTrashed->company ?? '-',
+                'Страна' => $d->orderWithTrashed->country ?? '-',
+                'Тип участия' => $this->mapParticipation($d->orderWithTrashed->participation),
+                'Дата заказа' => (string)$d->orderWithTrashed->created_at,
+                'Тип продажи' => $d->orderWithTrashed->pay_system ?? '-',
+                'Платформа' => $d->orderWithTrashed->platform ?? '-',
+                'Комментарий' => $d->orderWithTrashed->comment ?? '-',
             ];
+    
+            if ($d->orderWithTrashed->pay_system === 'forum') {
+                $row['Позиция'] = $d->orderWithTrashed->position ?? '-';
+                $row['Компания'] = $d->orderWithTrashed->company ?? '-';
+                $row['Страна'] = $d->orderWithTrashed->country ?? '-';
+                $row['Тип участия'] = $d->orderWithTrashed->participation ?? '-';
+            }
         }
         return $row;
     }
+
+    private function mapParticipation($participation)
+    {
+        $participationMap = [
+            'speaker' => 'Спикер',
+            'visitor' => 'Посетитель',
+            'exhibitor' => 'Участник выставки',
+        ];
+
+        return $participationMap[$participation] ?? $participation;
+    }
+    
 }

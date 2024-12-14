@@ -490,7 +490,7 @@ class Order extends Model {
 		$this->internal_fee = 0;
 		$this->external_fee = 0;
 		$this->save();
-		$this->successfullyPaid(0, false);
+		$this->successfullyPaid(0, true);
 		return true;
 	}
 	

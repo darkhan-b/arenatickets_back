@@ -34,7 +34,7 @@ class TicketsController extends Controller {
 	public function saveTickets($timetable_id, $group_id, Request $request) {
 		$timetable = Timetable::findOrFail($timetable_id);
 		$rules = [
-			'price' => ['required', 'numeric', 'min:1'],
+			'price' => ['required', 'numeric', 'min:0'],
 			'type'  => ['required', 'in:enter,seats'],
 		];
 		$type = $request->type;
