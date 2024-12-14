@@ -222,6 +222,10 @@ class SalesListReport
                 'Email',
                 'Контактные данные',
                 'Телефон',
+                'Позиция',
+                'Компания',
+                'Страна',
+                'Тип участия',
                 'Дата заказа',
                 'Тип продажи',
                 'Платформа',
@@ -282,7 +286,7 @@ class SalesListReport
                 $row['Позиция'] = $d->orderWithTrashed->position ?? '-';
                 $row['Компания'] = $d->orderWithTrashed->company ?? '-';
                 $row['Страна'] = $d->orderWithTrashed->country ?? '-';
-                $row['Тип участия'] = $d->orderWithTrashed->participation ?? '-';
+                $row['Тип участия'] = $this->mapParticipation($d->orderWithTrashed->participation);
             }
         }
         return $row;
