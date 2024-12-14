@@ -1,35 +1,13 @@
 #!/bin/bash
 
-# Проверка на наличие сообщения коммита
 if [ -z "$1" ]; then
   echo "Ошибка: Укажите сообщение для коммита!"
   exit 1
 fi
 
-# Локальная отправка изменений в Git
-echo "Подготовка к деплою..."
 git add .
 git commit --allow-empty -m "$1"
-if git push; then
-  echo "Изменения успешно отправлены в репозиторий."
-else
-  echo "Ошибка: Не удалось выполнить пуш изменений!"
-  exit 1
-fi
+git push
 
-# SSH подключение и деплой на сервер
-echo "Подключение к серверу для деплоя..."
-ssh -t root@91.147.95.50 << EOF
-  set -e
-  echo "Переключение в папку проекта..."
-  cd /var/www/arenatickets_back
-
-  echo "Получение последних изменений из Git..."
-  git pull
-
-  echo "Установка зависимостей..."
-  composer install --no-dev --optimize-autoloader
-
-  echo "Применение миграций базы данных..."
-  php artisan migrat
+ssh root@91.147.95.50 "cd /var/www/arenatickets_back && git pull && composer install --no-dev --optimize-autoloader && php artisan migrate --force && php artisan cache:clear && php artisan config:clear && php artisan route:clear"
 
